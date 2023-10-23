@@ -68,7 +68,7 @@ site pour savoir comment faire un interactor : https://www.techyourchance.com/ho
 2. Interface : "RegisterStudentRequestHandler"
 
 ```java
-public interface RegisterStudentRequestHandler {
+public class RegisterStudentRequestHandler {
     RegisterStudentResponse handle(RegisterStudentRequest request);
 }
 ```
@@ -79,7 +79,7 @@ public interface RegisterStudentRequestHandler {
 2. Interface : "CreateProgramRequestHandler"
 
 ```java
-public interface CreateProgramRequestHandler {
+public class CreateProgramRequestHandler {
     CreateProgramResponse handle(CreateProgramRequest request);
 }
 ```
@@ -90,7 +90,7 @@ public interface CreateProgramRequestHandler {
 2. Interface : "AssignStudentToProgramRequestHandler"
 
 ```java
-public interface AssignStudentToProgramRequestHandler {
+public class AssignStudentToProgramRequestHandler {
     AssignStudentToProgramResponse handle(AssignStudentToProgramRequest request);
 }
 ```
@@ -101,7 +101,7 @@ public interface AssignStudentToProgramRequestHandler {
 2. Interface : "CreateCourseRequestHandler"
 
 ```java
-public interface CreateCourseRequestHandler {
+public class CreateCourseRequestHandler {
     CreateCourseResponse handle(CreateCourseRequest request);
 }
 ```
@@ -112,7 +112,7 @@ public interface CreateCourseRequestHandler {
 2. Interface : "RegisterTeacherRequestHandler"
 
 ```java
-public interface RegisterTeacherRequestHandler {
+public class RegisterTeacherRequestHandler {
     RegisterTeacherResponse handle(RegisterTeacherRequest request);
 }
 ```
@@ -123,7 +123,7 @@ public interface RegisterTeacherRequestHandler {
 2. Interface : "AssignTeacherToCourseRequestHandler"
 
 ```java
-public interface AssignTeacherToCourseRequestHandler {
+public class AssignTeacherToCourseRequestHandler {
     AssignTeacherToCourseResponse handle(AssignTeacherToCourseRequest request);
 }
 ```
@@ -134,7 +134,7 @@ public interface AssignTeacherToCourseRequestHandler {
 2. Interface : "AssignStudentToCourseRequestHandler"
 
 ```java
-public interface AssignStudentToCourseRequestHandler {
+public class AssignStudentToCourseRequestHandler {
     AssignStudentToCourseResponse handle(AssignStudentToCourseRequest request);
 }
 ```
@@ -145,7 +145,7 @@ public interface AssignStudentToCourseRequestHandler {
 2. Interface : "GiveGradeRequestHandler"
 
 ```java
-public interface GiveGradeRequestHandler {
+public class GiveGradeRequestHandler {
     GiveGradeResponse handle(GiveGradeRequest request);
 }
 ```
@@ -156,7 +156,7 @@ public interface GiveGradeRequestHandler {
 2. Interface : "CheckAttendanceRequestHandler"
 
 ```java
-public interface CheckAttendanceRequestHandler {
+public class CheckAttendanceRequestHandler {
     CheckAttendanceResponse handle(CheckAttendanceRequest request);
 }
 ```
@@ -167,7 +167,7 @@ public interface CheckAttendanceRequestHandler {
 2. Interface : "CheckScheduledEventsRequestHandler"
 
 ```java
-public interface CheckScheduledEventsRequestHandler {
+public class CheckScheduledEventsRequestHandler {
     CheckScheduledEventsResponse handle(CheckScheduledEventsRequest request);
 }
 ```
@@ -178,7 +178,7 @@ public interface CheckScheduledEventsRequestHandler {
 2. Interface : "ApplyToCourseRequestHandler"
 
 ```java
-public interface ApplyToCourseRequestHandler {
+public class ApplyToCourseRequestHandler {
     ApplyToCourseResponse handle(ApplyToCourseRequest request);
 }
 ```
@@ -189,7 +189,7 @@ public interface ApplyToCourseRequestHandler {
 2. Interface : "ApplyToProgramRequestHandler"
 
 ```java
-public interface ApplyToProgramRequestHandler {
+public class ApplyToProgramRequestHandler {
     ApplyToProgramResponse handle(ApplyToProgramRequest request);
 }
 ```
@@ -212,14 +212,10 @@ public class UseCaseInterfaces {
 
 ```java
 public class RegisterStudentResponse {
-    private String message;
+    public Student Stduent;
 
-    public RegisterStudentResponse(String message) {
-        this.message = message;
-    }
-
-    public String getMessage() {
-        return message;
+    public RegisterStudentResponse(Student student) {
+        this.Student = student;
     }
 }
 
@@ -230,18 +226,23 @@ public class RegisterStudentResponse {
 
 ```java
 class RegisterStudentInteractor implements RegisterStudentRequestHandler {
+    @Inject
+    IStudentRepository _studentRepo;
+    
     @Override
     public RegisterStudentResponse handle(RegisterStudentRequest request) {
         // Logique d'enregistrement de l'étudiant ici
         // Vous pouvez accéder aux données de la requête (request) pour effectuer l'enregistrement
         // Générez un identifiant d'étudiant, enregistrez les données et renvoyez une réponse de confirmation
-
+        if(request.FirstName == null || request.LastName == null || request.ContactInfo == null){
+            throw new MissingFields("At least one field is missing");
+        }
         // Exemple simplifié
-        Student student = new Student(request.getFirstName(), request.getLastName(), request.getContactInfo());
+        Student student = new Student(request.FirstName, request.LastName, request.ContactInfo);
         // Enregistrez l'étudiant dans votre système, générez un ID, etc.
-
+        _studentRepo.Add(student);
         // Créez une réponse pour indiquer le succès
-        RegisterStudentResponse response = new RegisterStudentResponse("L'étudiant a été enregistré avec succès.");
+        RegisterStudentResponse response = new RegisterStudentResponse(student);
         return response;
     }
 }
@@ -251,18 +252,22 @@ class RegisterStudentInteractor implements RegisterStudentRequestHandler {
 
 ```java
 class CreateProgramInteractor implements CreateProgramRequestHandler {
+    @Inject
+    IProgramRepository _programRepo;
     @Override
     public CreateProgramResponse handle(CreateProgramRequest request) {
         // Logique de création de programme ici
         // Vous pouvez accéder aux données de la requête (request) pour créer le programme
         // Enregistrez le programme et ses cours associés, générez un identifiant, etc.
-
+        if(request.Name == null || request.Description == null){
+            throw new MissingFields("At least one field is missing");
+        }
         // Exemple simplifié
-        Program program = new Program(request.getName(), request.getDescription());
+        Program program = new Program(request.Name, request.Description);
         // Ajoutez les cours associés au programme, définissez les dates, etc.
-
+        _programRepo.Add();
         // Créez une réponse pour indiquer le succès
-        CreateProgramResponse response = new CreateProgramResponse("Le programme a été créé avec succès.");
+        CreateProgramResponse response = new CreateProgramResponse(program);
         return response;
     }
 }
