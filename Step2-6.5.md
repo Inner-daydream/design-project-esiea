@@ -1,5 +1,8 @@
 # Step 2 : Define the entity
-
+- Person
+- Conference
+- GradeEvent
+- Program
 - Administration
 - Teacher
 - Student
@@ -13,7 +16,6 @@
 title: Step 2
 ---
 classDiagram
-
     class Event {
     }
 
