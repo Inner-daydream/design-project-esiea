@@ -464,7 +464,7 @@ graph TD;
     id14(IPerosn)~~~
     id15(IProgram)
     end
-    subgraph Services
+    subgraph Entitées
    	 id16(Event)~~~
     id17(Course)~~~
     id18(Conference)
@@ -477,6 +477,16 @@ graph TD;
     id25(GradeEvent)~~~
     id26(Classroom)
     end
+    subgraph Data transger objects
+        id27(UserDTO)~~~
+        id28(TeacherDTO)
+        id29(AdminDTO)
+        id30(SchoolDTO)
+        id31(ClassDTO)~~~
+        id32(GradeDTO)
+        id33(CourseDTO)~~~
+        id34(ConferenceDTO)
+    end
 
 ```
 
@@ -487,8 +497,6 @@ graph TD;
 title: Step 6
 ---
 graph TD;
-   
-    
     subgraph Gateaway
         id13(IEvent)~~~
         id14(IPerosn)~~~
@@ -526,7 +534,7 @@ graph TD;
         id12(ApplyToProgramRequestHandler)-->id15(IProgram)
         
     end
-    subgraph Services
+    subgraph Entitées
    	 	id16(Event)-->id13(IEvent)
         id17(Course)-->id16(Event)
         id18(Conference)-->id16(Event)
@@ -561,4 +569,60 @@ Exemple pour le cas d'utilisation "Inscrire un étudiant" :
 4. Ensuite, le contrôleur instancie un présentateur pour afficher la réponse à l'utilisateur. Par exemple, le présentateur pourrait afficher un message de confirmation indiquant que l'inscription de l'étudiant a été réussie, et il peut afficher l'identifiant de l'étudiant nouvellement inscrit.
 
 Le contrôleur joue un rôle clé dans la gestion de l'interaction utilisateur et l'orchestration du cas d'utilisation "Inscrire un étudiant". Il s'assure que les informations de l'utilisateur sont correctement traitées et que le résultat est présenté de manière appropriée.
+
+
+# Step 8 : Présenter
+
+```java
+interface IStudentView{
+    void printStudent(StudentPresenter student)
+}
+//liste non exhaustive des propriétées
+class StudentPresenter{
+
+    private IStudent studentView;
+
+    private string id;
+    private string name;
+    private string phoneNumber;
+    private string address;
+    private List<GradePresenter> grades;
+
+
+    public StudentPresenter(IStudentView view){
+        studentView = view;
+    }
+    public Student toDomain(){
+        return new Student(name, phoneNumber, address, grades);
+    }
+    public static StudentPresenter fromDomain(Student student){
+        return new StudentPresenter(
+            this.id = student.Id;
+            //[...] mapping des propriétées
+        );
+    }
+
+    public string getStudentInfo(){
+        return $"{this.name}";
+    }
+    public void printView(){
+        view.printStudent(this);
+    }
+}
+```
+
+# Step 9 : View
+```java
+class StudentView : IStudentView {
+        void printStudent(StudentPresenter student){
+            System.out.prinln($"Student name {student.getStudentInfo()}")
+        }
+
+} 
+```
+
+# Step 10 : Packages review
+
+
+
 
