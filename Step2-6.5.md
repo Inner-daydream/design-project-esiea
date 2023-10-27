@@ -723,14 +723,14 @@ graph TD;
         id50(ClassroomPresenter)
     end
     subgraph View
-    	id51(StudentPresenter)~~~
-        id52(TeacherPresenter)
-        id53(AdminPresenter)~~~
-        id54(CoursePresenter)
-        id55(ProgramPresenter)~~~
-        id56(EventPresenter)
-        id57(SchoolPresenter)~~~
-        id58(ClassroomPresenter)
+    	id51(StudentView)~~~
+        id52(TeacherView)
+        id53(AdminView)~~~
+        id54(CourseView)
+        id55(ProgramView)~~~
+        id56(EventView)
+        id57(SchoolView)~~~
+        id58(ClassroomView)
     end
 
 ```
