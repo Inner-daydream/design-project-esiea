@@ -623,6 +623,9 @@ class StudentView : IStudentView {
 
 # Step 10 : Packages review
 
+```mermaid
+```
+
 
 
 
