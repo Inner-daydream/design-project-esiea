@@ -17,7 +17,7 @@ public class Admin extends Person {
 
     public void registerAPerson(IPerson student) {
         // Implémentez la logique pour enregistrer une personne (étudiant) dans le système.
-        
+
     }
 
     public void createProgram(String programName) {
