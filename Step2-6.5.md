@@ -71,6 +71,24 @@ site pour savoir comment faire un interactor : https://www.techyourchance.com/ho
 public class RegisterStudentRequestHandler {
     RegisterStudentResponse handle(RegisterStudentRequest request);
 }
+
+class RegisterStudentInteractor {
+    private List<Student> students;
+
+    public RegisterStudentInteractor(List<Student> students) {
+        this.students = students;
+    }
+
+    public void registerStudent(String firstName, String lastName, String email) {
+        Student student = new Student(firstName, lastName, email);
+        students.add(student);
+        System.out.println("Student registered: " + student.getFirstName() + " " + student.getLastName());
+    }
+
+    public List<Student> getAllStudents() {
+        return students;
+    }
+}
 ```
 
 ### "Create a Program":
@@ -570,6 +588,22 @@ Exemple pour le cas d'utilisation "Inscrire un étudiant" :
 
 Le contrôleur joue un rôle clé dans la gestion de l'interaction utilisateur et l'orchestration du cas d'utilisation "Inscrire un étudiant". Il s'assure que les informations de l'utilisateur sont correctement traitées et que le résultat est présenté de manière appropriée.
 
+```java
+public class AdminController {
+    public void registerStudent(String firstName, String lastName, String email) {
+        // Logique pour l'administrateur pour enregistrer un étudiant
+    }
+}
+
+public class StudentController {
+    public Student getStudentInformation(String studentId) {
+        // Logique pour récupérer les informations d'un étudiant
+    }
+}
+```
+
+
+
 
 # Step 8 : Présenter
 
@@ -623,6 +657,83 @@ class StudentView : IStudentView {
 
 # Step 10 : Packages review
 
+```mermaid
+---
+title: Step 10 = Package review
+---
+graph TD;
+   subgraph Interactor
+    id1(RegisterStudentRequestHandler)~~~ id4(CreateCourseRequestHandler) ~~~ id2(CreateProgramRequestHandler) ~~~
+    id5(AssignTeacherToCourseRequestHandler)  
+    
+    id3(AssignStudentToProgramRequestHandler)~~~ id6(AssignStudentToCourseRequestHandler) ~~~
+    id7(GiveGradeRequestHandler) ~~~ id8(CheckAttendanceRequestHandler)
+    
+    id9(CheckScheduledEventsRequestHandler) ~~~
+    id10(CheckScheduledEventsRequestHandler)~~~
+    id11(ApplyToCourseRequestHandler)~~~
+    id12(ApplyToProgramRequestHandler)
+    end
+    subgraph Gateaway
+    id13(IEvent)~~~
+    id14(IPerosn)~~~
+    id15(IProgram)
+    end
+    subgraph Entitées
+   	 id16(Event)~~~
+    id17(Course)~~~
+    id18(Conference)
+    id19(Person)~~~
+    id20(Student)~~~
+    id21(Teacher)
+    id22(Admin)~~~
+    id23(Program)~~~
+    id24(School)
+    id25(GradeEvent)~~~
+    id26(Classroom)
+    end
+    subgraph Data transger objects
+        id27(UserDTO)~~~
+        id28(TeacherDTO)
+        id29(AdminDTO)~~~
+        id30(SchoolDTO)
+        id31(ClassDTO)~~~
+        id32(GradeDTO)
+        id33(CourseDTO)~~~
+        id34(ConferenceDTO)
+    end
+    subgraph Controller
+        id35(StudentController)~~~
+        id36(TeacherController)
+        id37(AdminController)~~~
+        id38(CourseController)
+        id39(ProgramContronller)~~~
+        id40(EventController)
+        id41(SchoolController)~~~
+        id42(ClassroomController)
+    end
+    subgraph Presenter
+    	id43(StudentPresenter)~~~
+        id44(TeacherPresenter)
+        id45(AdminPresenter)~~~
+        id46(CoursePresenter)
+        id47(ProgramPresenter)~~~
+        id48(EventPresenter)
+        id49(SchoolPresenter)~~~
+        id50(ClassroomPresenter)
+    end
+    subgraph View
+    	id51(StudentPresenter)~~~
+        id52(TeacherPresenter)
+        id53(AdminPresenter)~~~
+        id54(CoursePresenter)
+        id55(ProgramPresenter)~~~
+        id56(EventPresenter)
+        id57(SchoolPresenter)~~~
+        id58(ClassroomPresenter)
+    end
+
+```
 
 
 
