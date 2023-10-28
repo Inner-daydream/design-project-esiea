@@ -7,8 +7,8 @@ import com.domain.abstractions.Person;
 public class Teacher extends Person {
     private int salary;
 
-    public Teacher(String id, String name, String phoneNumber, String address, School school, int salary) throws Exception {
-        super(id, name, phoneNumber, address, school);
+    public Teacher(String name, String phoneNumber, String address, School school, int salary) throws Exception {
+        super(name, phoneNumber, address, school);
         setSalary(salary);
     }
 
@@ -29,15 +29,5 @@ public class Teacher extends Person {
         GradeEvent gradeEvent = new GradeEvent(event, student);
         gradeEvent.addGrade(grade);
         student1.AddGrades(event, grade);
-    }
-
-    @Override
-    public String getID() {
-        return null;
-    }
-
-    @Override
-    public void SetID(String id) {
-
     }
 }

@@ -3,15 +3,11 @@ package com.domain.implementations;
 import com.domain.Interfaces.IEvent;
 import com.domain.Interfaces.IPerson;
 import com.domain.abstractions.Person;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 
 public class Admin extends Person {
-
-    public Admin(String id, String name, String phoneNumber, String address, School school) {
-        super(id, name, phoneNumber, address, school);
+    public Admin(String name, String phoneNumber, String address, School school) {
+        super(name, phoneNumber, address, school);
     }
-
 
     public void assignToProgram(Student student, String programName) {
         super.getSchool().getProgram(programName).getEvents().forEach(event -> {
@@ -33,13 +29,4 @@ public class Admin extends Person {
     }
 
 
-    @Override
-    public String getID() {
-        return null;
-    }
-
-    @Override
-    public void SetID(String id) {
-
-    }
 }

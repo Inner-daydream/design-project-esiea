@@ -7,22 +7,19 @@ import java.util.List;
 import java.util.Objects;
 
 public abstract class Person implements IPerson {
-    private String Id;
     private String name;
     private String phoneNumber;
     private String address;
-    private final School school;
-    private final List<IEvent> events;
+    private School school;
+    private List<IEvent> events;
 
-    public Person(String id, String name, String phoneNumber, String address, School school) {
-        this.Id = id;
+    public Person(String name, String phoneNumber, String address, School school) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.school = school;
         this.events = new ArrayList<>();
     }
-
     @Override
     public IEvent getEvent(IEvent event){
         return events.stream().filter(ievent -> ievent.getEventName().equals(event.getEventName())).findFirst().orElseThrow();

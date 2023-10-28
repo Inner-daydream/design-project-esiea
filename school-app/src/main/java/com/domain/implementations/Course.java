@@ -1,11 +1,7 @@
 package com.domain.implementations;
 
-import com.domain.Interfaces.IClassroom;
 import com.domain.Interfaces.IPerson;
 import com.domain.abstractions.Event;
-
-import java.util.Date;
-import java.util.List;
 
 public class Course extends Event {
     private boolean isExam;
@@ -21,8 +17,7 @@ public class Course extends Event {
         return Teacher = teacher;
     }
 
-    public Course(String id, String name, IClassroom classroom, Date startDate, Date endDate, List<IPerson> students, int capacity, boolean isOptional, boolean isExam, IPerson teacher) {
-        super(id, name, classroom, startDate, endDate, students, capacity, isOptional);
+    public Course(boolean isExam, IPerson teacher) {
         this.isExam = isExam;
         Teacher = teacher;
     }
