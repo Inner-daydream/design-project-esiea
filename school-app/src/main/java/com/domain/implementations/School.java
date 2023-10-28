@@ -8,13 +8,15 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class School {
+    private String Id;
     private String name;
     private String address;
     private String phoneNumber;
     private List<IPerson> people;
     private List<IProgram> programs;
 
-    public School(String name, String address, String phoneNumber) {
+    public School(String id, String name, String address, String phoneNumber) {
+        this.Id = id;
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
@@ -43,5 +45,13 @@ public class School {
                 return false;
             }
         }).findFirst().orElseThrow().getEventByName(eventName);
+    }
+
+    public String getId() {
+        return Id;
+    }
+
+    public void setId(String id) {
+        Id = id;
     }
 }

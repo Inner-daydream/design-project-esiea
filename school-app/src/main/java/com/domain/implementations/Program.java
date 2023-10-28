@@ -7,12 +7,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Program implements IProgram {
+    private String id;
     private String name;
     private List<IEvent> events;
 
-    public Program(String name) {
+    public Program(String id, String name) {
+        this.id = id;
         this.name = name;
         this.events = new ArrayList<>();
+    }
+
+    @Override
+    public String getID() {
+        return this.id;
+    }
+
+    @Override
+    public void setID(String id) {
+        this.id = id;
     }
 
     public void addEvent(IEvent event) {

@@ -6,6 +6,7 @@ import java.util.List;
 public interface IEvent {
     boolean isEventOptional();
     List<IPerson> getAttendees();
+    String getID();
 
     Date getStartDate();
     Date getEndDate();
@@ -14,7 +15,10 @@ public interface IEvent {
     int getEventCapacity();
     IPerson addAttendee(IPerson attendees);
     IPerson getAttendee(IPerson attendee);
+
+    void setID(String id);
     void setStartDate(Date startDate) throws Exception;
+
     void setEndDate(Date endDate) throws Exception;
     void setPlace(IClassroom place);
     void setEventName(String name);

@@ -10,8 +10,8 @@ public class Student extends Person {
     private List<GradeEvent> grades;
     private int lunchCredit;
 
-    public Student(String name, String phoneNumber, String address, School school) {
-        super(name, phoneNumber, address, school);
+    public Student(String id, String name, String phoneNumber, String address, School school) {
+        super(id, name, phoneNumber, address, school);
         lunchCredit = 0;
         grades = new ArrayList<>();
     }
@@ -38,5 +38,14 @@ public class Student extends Person {
 
     }
 
+    @Override
+    public String getID() {
+        return null;
+    }
+
+    @Override
+    public void SetID(String id) {
+
+    }
 }
 

@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.List;
 
 public abstract class Event implements IEvent {
+
+    private String Id;
     private String name;
     private IClassroom classroom;
     private Date startDate;
@@ -14,6 +16,26 @@ public abstract class Event implements IEvent {
     private int capacity;
     private boolean isOptional;
 
+    public Event(String id, String name, IClassroom classroom, Date startDate, Date endDate, List<IPerson> students, int capacity, boolean isOptional) {
+        this.Id = id;
+        this.name = name;
+        this.classroom = classroom;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.students = students;
+        this.capacity = capacity;
+        this.isOptional = isOptional;
+    }
+
+    @Override
+    public String getID() {
+        return this.Id;
+    }
+
+    @Override
+    public void setID(String id) {
+        this.Id = id;
+    }
     public boolean isEventOptional(){
         return isOptional;
     };
