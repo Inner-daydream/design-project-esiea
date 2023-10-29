@@ -20,15 +20,18 @@ public class Teacher {
     private String name;
     private String phoneNumber;
     private String address;
-    //private School school;
     private int salary;
-    private Long schoolId;
 
-    public Teacher(String name, String phoneNumber, String address/*, School school*/, int salary) {
+    @ManyToOne
+    @JoinColumn(name = "school_id")
+    private School school;
+
+
+    public Teacher(String name, String phoneNumber, String address, School school, int salary) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.address = address;
-        //this.school = school;
+        this.school = school;
         this.salary = salary;
     }
 
@@ -41,7 +44,7 @@ public class Teacher {
     }
 
     public Long getSchoolId() {
-        return 0l;//school.getId();
+        return school.getId();
     }
 
     public void setId(Long id) {
@@ -76,13 +79,13 @@ public class Teacher {
         this.address = address;
     }
 
-    /*public School getSchool() {
+    public School getSchool() {
         return school;
     }
 
     public void setSchool(School school) {
         this.school = school;
-    }*/
+    }
 
     public int getSalary() {
         return salary;

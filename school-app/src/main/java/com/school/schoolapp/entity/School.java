@@ -5,32 +5,27 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Embeddable
+@Table(name = "schools")
 
 public class School {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
     private String address;
     private String phoneNumber;
 
-    @ElementCollection
-    @CollectionTable(name = "Schools_admins")
+    @OneToMany(mappedBy = "school")
     private List<Admin> admins;
 
-    @ElementCollection
-    @CollectionTable(name = "Schools_teachers")
+    @OneToMany(mappedBy = "school")
     private List<Teacher> teachers;
 
-    @ElementCollection
-    @CollectionTable(name = "Schools_students")
+    @OneToMany(mappedBy = "school")
     private List<Student> students;
 
-    @ElementCollection
-    @CollectionTable(name = "Schools_classrooms")
+    @OneToMany(mappedBy = "school")
     private List<Classroom> classrooms;
 
     @Transient
@@ -49,14 +44,10 @@ public class School {
         this.phoneNumber = "";
     }
 
-    public School(String name, String address, String phoneNumber, List<Admin> admins, List<Teacher> teachers, List<Student> students, List<Classroom> classrooms) {
+    public School(String name, String address, String phoneNumber) {
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
-        this.admins = admins;
-        this.teachers = teachers;
-        this.students = students;
-        this.classrooms = classrooms;
     }
 
     public int getNumberOfClasses() {
@@ -75,7 +66,6 @@ public class School {
         return this.admins.size();
     }
 
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -83,6 +73,7 @@ public class School {
     public Long getId() {
         return id;
     }
+
     public String getName() {
         return name;
     }
@@ -137,5 +128,9 @@ public class School {
 
     public void setClassrooms(List<Classroom> classrooms) {
         this.classrooms = classrooms;
+    }
+
+    public void addClassroom(Classroom classroom) {
+        this.classrooms.add(classroom);
     }
 }

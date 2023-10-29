@@ -17,12 +17,13 @@ public class Admin {
             generator = "admin_sequence"
     )
     private Long id;
-    private String name;/**/
+    private String name;
     private String phoneNumber;
     private String address;
-    @Embedded
+
+    @ManyToOne
+    @JoinColumn(name = "school_id")
     private School school;
-    private Long schoolId;
 
     public Admin(String name, String phoneNumber, String address, School school) {
         this.name = name;

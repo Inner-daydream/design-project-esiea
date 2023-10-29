@@ -21,6 +21,10 @@ public class Classroom {
     private String buildingName;
     private int capacity;
 
+    @ManyToOne
+    @JoinColumn(name = "school_id")
+    private School school;
+
     public Classroom() {
         this.id = 0L;
         this.name = "";
@@ -28,10 +32,11 @@ public class Classroom {
         this.capacity = 0;
     }
 
-    public Classroom(String name, String buildingName, int capacity) {
+    public Classroom(String name, String buildingName, int capacity, School school) {
         this.name = name;
         this.buildingName = buildingName;
         this.capacity = capacity;
+        this.school = school;
     }
     public void setId(Long id) {
         this.id = id;
@@ -63,5 +68,14 @@ public class Classroom {
 
     public void setCapacity(int capacity) {
         this.capacity = capacity;
+    }
+
+    public School getSchool() {
+        return school;
+    }
+
+    public void setSchool(School school) {
+        this.school = school;
+        school.addClassroom(this);
     }
 }

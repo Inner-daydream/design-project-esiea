@@ -21,15 +21,17 @@ public class Student {
     private String name;
     private String phoneNumber;
     private String address;
-    //private School school;
     private int lunchCredit;
-    private Long schoolId;
 
-    public Student(String name, String phoneNumber, String address/*, School school*/, int lunchCredit) {
+    @ManyToOne
+    @JoinColumn(name = "school_id")
+    private School school;
+
+    public Student(String name, String phoneNumber, String address, School school, int lunchCredit) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.address = address;
-        //this.school = school;
+        this.school = school;
         this.lunchCredit = lunchCredit;
     }
 
@@ -42,7 +44,7 @@ public class Student {
     }
 
     public void getSchoolId() {
-        this.schoolId = 0L;//school.getId();
+        school.getId();
     }
 
     public void setId(Long id) {
