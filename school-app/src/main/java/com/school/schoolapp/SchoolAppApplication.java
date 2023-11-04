@@ -1,7 +1,7 @@
 package com.school.schoolapp;
 
-import com.domain.implementations.School;
-import com.infrastructure.persistance.SchoolRepository;
+import com.school.schoolapp.domain.implementations.School;
+import com.school.schoolapp.persistance.SchoolRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,8 +10,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EnableJpaRepositories("com.infrastructure.persistance")
-@EntityScan("com.domain.$")
+@EnableJpaRepositories("com.school.schoolapp.persistance")
+@EntityScan("com.school.domain.*")
 public class SchoolAppApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SchoolAppApplication.class, args);
