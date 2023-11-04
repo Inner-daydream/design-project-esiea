@@ -1,11 +1,13 @@
 package com.domain.Interfaces;
 
+import com.domain.abstractions.Person;
+
 import java.util.Date;
 import java.util.List;
 
 public interface IEvent {
     boolean isEventOptional();
-    List<IPerson> getAttendees();
+    List<Person> getAttendees();
 
     Date getStartDate();
     Date getEndDate();

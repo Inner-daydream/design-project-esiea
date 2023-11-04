@@ -3,6 +3,9 @@ package com.domain.implementations;
 import com.domain.Interfaces.IEvent;
 import com.domain.Interfaces.IPerson;
 import com.domain.abstractions.Person;
+import jakarta.persistence.MappedSuperclass;
+
+@MappedSuperclass
 
 public class Admin extends Person {
     public Admin(String name, String phoneNumber, String address, School school) {
@@ -22,6 +25,7 @@ public class Admin extends Person {
 
     public void createProgram(String programName) {
         // Implémentez la logique pour créer un nouveau programme avec le nom spécifié.
+        super.getSchool().addProgram(new Program(programName));
     }
 
     public void addEventToProgram(IEvent event, String programName) {

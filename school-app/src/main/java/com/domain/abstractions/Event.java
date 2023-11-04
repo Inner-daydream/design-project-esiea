@@ -1,23 +1,41 @@
 package com.domain.abstractions;
 
 import com.domain.Interfaces.*;
+import com.domain.implementations.Classroom;
+import jakarta.persistence.*;
 
 import java.util.Date;
 import java.util.List;
 
+@Entity
+@Table
+@DiscriminatorColumn(name="EVENT_TYPE")
 public abstract class Event implements IEvent {
     private String name;
-    private IClassroom classroom;
+    @ManyToOne
+    private Classroom classroom;
     private Date startDate;
     private Date endDate;
-    private List<IPerson> students;
+    @ManyToMany
+    private List<Person> students;
     private int capacity;
     private boolean isOptional;
+    @Id
+    @SequenceGenerator(
+            name = "_sequenceEvent",
+            sequenceName = "_sequenceEvent",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "_sequenceEvent"
+    )
+    private Long id;
 
     public boolean isEventOptional(){
         return isOptional;
     };
-    public List<IPerson> getAttendees(){
+    public List<Person> getAttendees(){
         return students;
     };
     public Date getStartDate(){
@@ -63,7 +81,7 @@ public abstract class Event implements IEvent {
         this.endDate = endDate;
     };
     public void setPlace(IClassroom place){
-        this.classroom = place;
+        this.classroom = (Classroom) place;
     };
     public void setEventName(String name){
         this.name = name;
@@ -71,4 +89,12 @@ public abstract class Event implements IEvent {
     public void setCapacity(int capacity){
         this.capacity = capacity;
     };
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
 }

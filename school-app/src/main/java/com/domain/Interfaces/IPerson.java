@@ -1,5 +1,6 @@
 package com.domain.Interfaces;
 
+import com.domain.abstractions.Event;
 import com.domain.implementations.School;
 
 import java.util.List;
@@ -8,7 +9,7 @@ public interface IPerson {
     String getName();
     String getPhoneNumber();
     String getAddress();
-    List<IEvent> getEvents();
+    List<Event> getEvents();
     School getSchool();
     void setName(String name);
     void setPhoneNumber(String phoneNumber);

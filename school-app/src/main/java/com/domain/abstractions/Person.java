@@ -1,17 +1,33 @@
 package com.domain.abstractions;
 import com.domain.Interfaces.*;
 import com.domain.implementations.School;
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
+@Entity
+@Table
+@DiscriminatorColumn(name="PERSON_TYPE")
 public abstract class Person implements IPerson {
     private String name;
     private String phoneNumber;
     private String address;
+    @OneToOne
     private School school;
-    private List<IEvent> events;
+    @ManyToMany
+    private List<Event> events;
+    @Id
+    @SequenceGenerator(
+            name = "_sequencePerson",
+            sequenceName = "_sequencePerson",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "_sequencePerson"
+    )
+    private Long id;
 
     public Person(String name, String phoneNumber, String address, School school) {
         this.name = name;
@@ -20,6 +36,11 @@ public abstract class Person implements IPerson {
         this.school = school;
         this.events = new ArrayList<>();
     }
+
+    public Person() {
+
+    }
+
     @Override
     public IEvent getEvent(IEvent event){
         return events.stream().filter(ievent -> ievent.getEventName().equals(event.getEventName())).findFirst().orElseThrow();
@@ -56,7 +77,7 @@ public abstract class Person implements IPerson {
     }
 
     @Override
-    public List<IEvent> getEvents() {
+    public List<Event> getEvents() {
         return events;
     }
 
@@ -77,7 +98,7 @@ public abstract class Person implements IPerson {
 
     @Override
     public void addEvent(IEvent event) {
-        events.add(event);
+        events.add((Event) event);
     }
 
     @Override
@@ -85,5 +106,13 @@ public abstract class Person implements IPerson {
         if (eventIndex >= 0 && eventIndex < events.size()) {
             events.remove(eventIndex);
         }
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

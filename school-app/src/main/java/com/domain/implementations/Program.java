@@ -2,24 +2,43 @@ package com.domain.implementations;
 
 import com.domain.Interfaces.IEvent;
 import com.domain.Interfaces.IProgram;
+import com.domain.abstractions.Event;
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Table
+@Entity
 public class Program implements IProgram {
     private String name;
-    private List<IEvent> events;
+    @OneToMany
+    private List<Event> events;
+    @Id
+    @SequenceGenerator(
+            name = "_sequenceProgram",
+            sequenceName = "_sequenceProgram",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "_sequenceProgram"
+    )
+    private Long id;
 
     public Program(String name) {
         this.name = name;
         this.events = new ArrayList<>();
     }
 
-    public void addEvent(IEvent event) {
-        events.add(event);
+    public Program() {
+
     }
 
-    public List<IEvent> getEvents() {
+    public void addEvent(IEvent event) {
+        events.add((Event)event);
+    }
+
+    public List<Event> getEvents() {
         return events;
     }
 
@@ -30,5 +49,13 @@ public class Program implements IProgram {
     @Override
     public IEvent getEventByName(String eventName) {
         return this.events.stream().filter(event -> event.getEventName().equals(eventName)).findFirst().orElseThrow();
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

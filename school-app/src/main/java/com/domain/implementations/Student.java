@@ -1,12 +1,16 @@
 package com.domain.implementations;
 
 import com.domain.Interfaces.IEvent;
+import com.domain.abstractions.Event;
 import com.domain.abstractions.Person;
+import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.OneToMany;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@MappedSuperclass
 public class Student extends Person {
+    @OneToMany
     private List<GradeEvent> grades;
     private int lunchCredit;
 
@@ -24,7 +28,7 @@ public class Student extends Person {
             GradeEvent res = grades.stream().filter(gr -> gr.getEvent().equals(event)).findFirst().orElseThrow();
             res.addGrade(grade);
         }else{
-            var ge = new GradeEvent(event, this);
+            var ge = new GradeEvent((Event)event, this);
             ge.addGrade(grade);
             grades.add(ge);
         }

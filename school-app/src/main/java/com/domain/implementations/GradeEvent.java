@@ -2,19 +2,46 @@ package com.domain.implementations;
 
 import com.domain.Interfaces.IEvent;
 import com.domain.Interfaces.IPerson;
+import com.domain.abstractions.Event;
+import com.domain.abstractions.Person;
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Table
+@Entity
 public class GradeEvent {
-    private IEvent event;
-    private IPerson person;
+    @OneToOne
+    private Event event;
+    @OneToOne
+    private Person person;
+    @ElementCollection
+    @CollectionTable(
+            name = "grade_event_grades", // You can specify the name of the table for grades
+            joinColumns = @JoinColumn(name = "grade_event_id") // Define a foreign key column
+    )
+    @Column(name = "grade")
     private List<Float> grades;
+    @Id
+    @SequenceGenerator(
+            name = "_sequenceGrade",
+            sequenceName = "_sequenceGrade",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "_sequenceGrade"
+    )
+    private Long id;
 
-    public GradeEvent(IEvent event, IPerson person) {
+    public GradeEvent(Event event, Person person) {
         this.event = event;
         this.person = person;
         this.grades = new ArrayList<>();
+    }
+
+    public GradeEvent() {
+
     }
 
     public IEvent getEvent() {
@@ -36,5 +63,13 @@ public class GradeEvent {
         }
 
         return sum / grades.size();
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 }
