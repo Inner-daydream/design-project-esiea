@@ -3,14 +3,10 @@ package com.school.schoolapp.domain.implementations;
 import com.school.schoolapp.domain.Interfaces.IEvent;
 import com.school.schoolapp.domain.abstractions.Event;
 import com.school.schoolapp.domain.abstractions.Person;
-import jakarta.persistence.MappedSuperclass;
-import jakarta.persistence.OneToMany;
 
 import java.util.ArrayList;
 import java.util.List;
-@MappedSuperclass
 public class Student extends Person {
-    @OneToMany
     private List<GradeEvent> grades;
     private int lunchCredit;
 

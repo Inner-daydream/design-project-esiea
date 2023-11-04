@@ -2,32 +2,17 @@ package com.school.schoolapp.domain.abstractions;
 import com.school.schoolapp.domain.Interfaces.IPerson;
 import com.school.schoolapp.domain.implementations.School;
 import com.school.schoolapp.domain.Interfaces.IEvent;
-import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-@Entity
-@Table
-@DiscriminatorColumn(name="PERSON_TYPE")
 public abstract class Person implements IPerson {
     private String name;
     private String phoneNumber;
     private String address;
-    @OneToOne
     private School school;
-    @ManyToMany
     private List<Event> events;
-    @Id
-    @SequenceGenerator(
-            name = "_sequencePerson",
-            sequenceName = "_sequencePerson",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "_sequencePerson"
-    )
+
     private Long id;
 
     public Person(String name, String phoneNumber, String address, School school) {

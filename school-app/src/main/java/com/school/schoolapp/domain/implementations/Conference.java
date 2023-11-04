@@ -1,21 +1,31 @@
 package com.school.schoolapp.domain.implementations;
 
+import java.util.Date;
+import java.util.List;
+
 import com.school.schoolapp.domain.Interfaces.IPerson;
 import com.school.schoolapp.domain.abstractions.Event;
 import com.school.schoolapp.domain.abstractions.Person;
-import jakarta.persistence.MappedSuperclass;
-import jakarta.persistence.OneToOne;
 
-@MappedSuperclass
+
+
 public class Conference extends Event {
-    @OneToOne
     private Person speaker;
-
-    public Conference(IPerson speaker) {
+    public Conference(String name, Classroom classroom, Date startDate, Date endDate, List<Person> students, int capacity, boolean isOptional, IPerson speaker) {
+        super(name, classroom, startDate, endDate, students, capacity, isOptional);
         this.speaker = (Person) speaker;
     }
-
     public Person getSpeaker() {
         return speaker;
+    }
+    @Override
+    public String getEventName() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getEventName'");
+    }
+    @Override
+    public int getEventCapacity() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getEventCapacity'");
     }
 }

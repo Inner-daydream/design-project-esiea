@@ -4,9 +4,7 @@ import com.school.schoolapp.domain.Interfaces.IEvent;
 import com.school.schoolapp.domain.Interfaces.IPerson;
 import com.school.schoolapp.domain.abstractions.Event;
 import com.school.schoolapp.domain.abstractions.Person;
-import jakarta.persistence.MappedSuperclass;
 
-@MappedSuperclass
 public class Teacher extends Person {
     private int salary;
 

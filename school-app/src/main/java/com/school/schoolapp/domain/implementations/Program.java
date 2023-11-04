@@ -3,26 +3,13 @@ package com.school.schoolapp.domain.implementations;
 import com.school.schoolapp.domain.Interfaces.IEvent;
 import com.school.schoolapp.domain.Interfaces.IProgram;
 import com.school.schoolapp.domain.abstractions.Event;
-import jakarta.persistence.*;
-
 import java.util.ArrayList;
 import java.util.List;
-@Table
-@Entity
+
 public class Program implements IProgram {
     private String name;
-    @OneToMany
     private List<Event> events;
-    @Id
-    @SequenceGenerator(
-            name = "_sequenceProgram",
-            sequenceName = "_sequenceProgram",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "_sequenceProgram"
-    )
+
     private Long id;
 
     public Program(String name) {

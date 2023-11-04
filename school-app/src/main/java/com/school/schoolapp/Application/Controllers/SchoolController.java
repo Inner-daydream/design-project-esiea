@@ -1,27 +1,30 @@
 package com.school.schoolapp.Application.Controllers;
 
-import com.school.schoolapp.Application.Services.SchoolService;
-import com.school.schoolapp.domain.implementations.School;
+import com.school.schoolapp.Application.Requests.CreateSchoolRequest;
+import com.school.schoolapp.Application.response.CreateSchoolResponse;
+import com.school.schoolapp.domain.services.SchoolService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import java.util.UUID;
 
 @RestController
-@RequestMapping("api/school")
+@RequestMapping("/api/school")
 public class SchoolController {
-
-    private final SchoolService schooltest;
+    private final SchoolService school;
+    
     @Autowired
-    public SchoolController(SchoolService schooltest) {
-        this.schooltest = schooltest;
+    public SchoolController(SchoolService school) {
+        this.school = school;
+    }
+    @PostMapping("/create")
+    public CreateSchoolResponse createSchool(@RequestBody CreateSchoolRequest request){
+        UUID id = school.createSchool(request.getSchool());
+        return new CreateSchoolResponse(id);
     }
 
 
-    @GetMapping
-    public List<School> getSchools(){
-        return schooltest.getSchools();
-    }
+
 }

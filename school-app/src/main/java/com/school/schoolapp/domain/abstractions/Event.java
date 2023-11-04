@@ -4,36 +4,40 @@ import com.school.schoolapp.domain.Interfaces.IClassroom;
 import com.school.schoolapp.domain.Interfaces.IPerson;
 import com.school.schoolapp.domain.implementations.Classroom;
 import com.school.schoolapp.domain.Interfaces.IEvent;
-import jakarta.persistence.*;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
-@Entity
-@Table
-@DiscriminatorColumn(name="EVENT_TYPE")
 public abstract class Event implements IEvent {
     private String name;
-    @ManyToOne
     private Classroom classroom;
     private Date startDate;
     private Date endDate;
-    @ManyToMany
     private List<Person> students;
     private int capacity;
     private boolean isOptional;
-    @Id
-    @SequenceGenerator(
-            name = "_sequenceEvent",
-            sequenceName = "_sequenceEvent",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "_sequenceEvent"
-    )
-    private Long id;
+    private UUID id;
 
+    public Event(String name, Classroom classroom, Date startDate, Date endDate, List<Person> students, int capacity, boolean isOptional){
+        this.name = name;
+        this.classroom = classroom;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.students = students;
+        this.capacity = capacity;
+        this.isOptional = isOptional;
+        this.id = UUID.randomUUID();
+    }
+    public Classroom getClassroom() {
+        return classroom;
+    }
+    public List<Person> getStudents() {
+        return students;
+    }
+    public boolean isOptional() {
+        return isOptional;
+    }
     public boolean isEventOptional(){
         return isOptional;
     };
@@ -49,10 +53,10 @@ public abstract class Event implements IEvent {
     public IClassroom getPlace(){
         return classroom;
     };
-    public String getEventName(){
+    public String getName(){
         return name;
     };
-    public int getEventCapacity(){
+    public int getCapacity(){
         return capacity;
     };
 
@@ -92,11 +96,8 @@ public abstract class Event implements IEvent {
         this.capacity = capacity;
     };
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 }

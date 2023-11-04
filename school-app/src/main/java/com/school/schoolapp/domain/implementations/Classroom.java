@@ -1,24 +1,11 @@
 package com.school.schoolapp.domain.implementations;
 
 import com.school.schoolapp.domain.Interfaces.IClassroom;
-import jakarta.persistence.*;
 
-@Entity
-@Table
 public class Classroom implements IClassroom {
     private String name;
     private String buildingName;
     private int capacity;
-    @Id
-    @SequenceGenerator(
-            name = "_sequenceClass",
-            sequenceName = "_sequenceClass",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "_sequenceClass"
-    )
     private Long id;
 
     public String getName() {
