@@ -1,4 +1,4 @@
-package com.starter;
+package com.school.schoolapp;
 
 import com.domain.implementations.School;
 import com.infrastructure.persistance.SchoolRepository;
