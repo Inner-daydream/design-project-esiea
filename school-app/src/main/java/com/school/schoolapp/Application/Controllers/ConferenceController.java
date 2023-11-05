@@ -1,7 +1,8 @@
 package com.school.schoolapp.Application.Controllers;
 
 import com.school.schoolapp.Application.Requests.CreateConferenceRequest;
-import com.school.schoolapp.Application.response.CreateConferenceResponse;
+import com.school.schoolapp.Application.response.conference.CreateConferenceResponse;
+import com.school.schoolapp.Application.response.conference.GetAllConferencesResponse;
 import com.school.schoolapp.domain.services.ClassroomService;
 import com.school.schoolapp.domain.services.ConferenceService;
 import com.school.schoolapp.domain.services.PersonService;
@@ -40,5 +41,10 @@ public class ConferenceController {
         );
         return new CreateConferenceResponse(id);
     }
+    @GetMapping
+    public GetAllConferencesResponse getConference(){
+        return new GetAllConferencesResponse(conferenceService.getAllConferences());
+    }
+    
 
 }

@@ -7,6 +7,6 @@ import java.util.UUID;
 
 public interface EventService {
     UUID createEvent(IEvent event);
-    IEvent getEvent(String id);
+    // IEvent getEvent(String id);
 
 }

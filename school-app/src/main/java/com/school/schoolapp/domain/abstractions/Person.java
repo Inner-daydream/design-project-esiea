@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
-public abstract class Person implements IPerson {
+public class Person implements IPerson {
     private String name;
     private String phoneNumber;
     private String address;

@@ -24,6 +24,11 @@ public class Teacher extends Person {
         this.salary = salary;
     }
 
+    public Teacher(String name, String phoneNumber, String address, UUID schoolID, UUID id) {
+        super(name, phoneNumber, address, schoolID, id);
+        this.salary = 0;
+    }
+
     public int getSalary() {
         return salary;
     }

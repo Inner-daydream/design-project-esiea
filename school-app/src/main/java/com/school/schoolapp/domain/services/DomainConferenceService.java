@@ -28,6 +28,10 @@ public class DomainConferenceService implements ConferenceService{
         }
         return students;
     }
+    @Override
+    public List<Conference> getAllConferences() {
+        return conferenceRepository.findAll().get();
+    }
 
     
 }

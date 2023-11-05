@@ -1,13 +1,21 @@
 package com.school.schoolapp.infrastructure.repository.postgre;
 
+import com.school.schoolapp.domain.Interfaces.IPerson;
+import com.school.schoolapp.domain.implementations.Classroom;
 import com.school.schoolapp.domain.implementations.Conference;
+import com.school.schoolapp.domain.implementations.Student;
+import com.school.schoolapp.domain.abstractions.Person;
 import com.school.schoolapp.domain.ports.ConferenceRepository;
 import com.school.schoolapp.infrastructure.entities.ClassroomEntity;
 import com.school.schoolapp.infrastructure.entities.ConferenceEntity;
 import com.school.schoolapp.infrastructure.entities.EventEntity;
+import com.school.schoolapp.infrastructure.entities.PersonEntity;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -36,5 +44,40 @@ public class PostgreConferenceRepository implements ConferenceRepository {
         EventEntity eventEntity = new EventEntity(conference);
         this.postgreEventDataRepository.save(eventEntity);
         this.postgreConferenceDataRepository.save(conferenceEntity);
+    }
+
+    @Override
+    public Optional<List<Conference>> findAll() {
+        List<ConferenceEntity> conferenceEntities = this.postgreConferenceDataRepository.findAll();
+        if (conferenceEntities.size() > 0) {
+            List<Conference> conferences = new java.util.ArrayList<Conference>();
+            for (ConferenceEntity conferenceEntity : conferenceEntities) {
+                EventEntity eventEntity = conferenceEntity.getEvent();
+                ClassroomEntity classroomEntity = eventEntity.getClassroom();
+                PersonEntity speakerEntity = conferenceEntity.getSpeaker();
+                List<Student> attendees = new java.util.ArrayList<Student>();
+                for (PersonEntity personEntity : eventEntity.getAttendees()) {
+                    attendees.add(new Student(personEntity.getName(), personEntity.getPhoneNumber(), personEntity.getAddress()));
+                }
+                Conference conference = new Conference(
+                        eventEntity.getName(),
+                        new Classroom(
+                                classroomEntity.getName(),
+                                classroomEntity.getBuildingName(),
+                                classroomEntity.getCapacity()
+    
+                        ),
+                        eventEntity.getStartDate(),
+                        eventEntity.getEndDate(),
+                        attendees,
+                        eventEntity.getCapacity(),
+                        eventEntity.isOptional(),
+                        new Person(speakerEntity.getName(), speakerEntity.getPhoneNumber(), speakerEntity.getAddress())
+                );
+                conferences.add(conference);
+            }
+            return Optional.of(conferences);
+        }
+        return Optional.empty();
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Component
 public class PostgrePersonRepository implements PersonRepository {
@@ -25,16 +26,17 @@ public class PostgrePersonRepository implements PersonRepository {
         this.postgrePersonDataRepository.save(personEntity);
     }
     @Override
+        // public Teacher(String name, String phoneNumber, String address, UUID schoolID, UUID id, int salary) {
     public Optional<Person> findById(String id) {
         Optional<PersonEntity> personEntity = this.postgrePersonDataRepository.findById(id);
         if(personEntity.isPresent()) {
-            Admin admin = new Admin(
+            Teacher admin = new Teacher(
                     personEntity.get().getName(),
                     personEntity.get().getPhoneNumber(),
                     personEntity.get().getAddress(),
-                    0
+                    UUID.fromString(personEntity.get().getSchoolID()),
+                    UUID.fromString(id)
             );
-
             return Optional.of(admin);
         }
         return Optional.empty();

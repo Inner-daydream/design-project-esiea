@@ -26,7 +26,7 @@ public class EventEntity {
 
     @ManyToOne
     private PersonEntity personEntity;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "person_event", joinColumns = @JoinColumn(name = "event_id"), inverseJoinColumns = @JoinColumn(name = "person_id"))
     private List<PersonEntity> attendees;
     private int capacity;
@@ -50,12 +50,12 @@ public class EventEntity {
         this.capacity = event.getCapacity();
         this.isOptional = event.isOptional();
         this.id = event.getId().toString();
-        try{
-            this.personEntity = new PersonEntity((event.getTeacher()));
+        // try{
+        //     this.personEntity = new PersonEntity((event.getTeacher()));
 
-        }catch (Exception ex){
-            this.personEntity = null;
-        }
+        // }catch (Exception ex){
+        //     this.personEntity = null;
+        // }
         this.attendees = new LinkedList<>();
         for (IPerson person : event.getAttendees()) {
             this.attendees.add(new PersonEntity(person));

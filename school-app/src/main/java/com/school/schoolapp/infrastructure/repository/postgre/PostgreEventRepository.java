@@ -26,24 +26,25 @@ public class PostgreEventRepository implements EventRepository {
         this.postgreEventDataRepository.save(eventEntity);
     }
 
-    @Override
-    public IEvent findById(String id) {
-        EventEntity res = this.postgreEventDataRepository.findById(id).orElseThrow();
-        return new Event(
-                res.getName(),
-                res.getClassroom().toClassroom(),
-                res.getStartDate(),
-                res.getEndDate(),
-                res.getAttendees().stream().map(item ->
-                        new Student(item.getName(), item.getAddress(), item.getPhoneNumber())
-                ).toList(),
-                res.getCapacity(),
-                res.isOptional()
-        ) {
-            @Override
-            public Person getTeacher() throws Exception {
-                throw new Exception("is not teacher");
-            }
-        };
-    }
+    // @Override
+    // public IEvent findById(String id) {
+    //     EventEntity res = this.postgreEventDataRepository.findById(id).orElseThrow();
+    //     return new Event(
+    //             res.getName(),
+    //             res.getClassroom().toClassroom(),
+    //             res.getStartDate(),
+    //             res.getEndDate(),
+    //             res.getAttendees().stream().map(item ->
+    //                     new Student(item.getName(), item.getAddress(), item.getPhoneNumber())
+    //             ).toList(),
+    //             res.getCapacity(),
+    //             res.isOptional()
+    //     );
+    //     // {
+    //     //     @Override
+    //     //     public Person getTeacher() throws Exception {
+    //     //         throw new Exception("is not teacher");
+    //     //     }
+    //     // };
+    // }
 }

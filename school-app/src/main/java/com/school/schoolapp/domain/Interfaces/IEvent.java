@@ -12,7 +12,7 @@ public interface IEvent {
     UUID getId();
     Date getStartDate();
 
-    Person getTeacher() throws Exception;
+    // Person getTeacher() throws Exception;
     Date getEndDate();
     IClassroom getPlace();
     String getName();

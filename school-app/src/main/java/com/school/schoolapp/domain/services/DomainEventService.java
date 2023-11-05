@@ -17,8 +17,8 @@ public class DomainEventService implements EventService{
         return event.getId();
     }
 
-    @Override
-    public IEvent getEvent(String id) {
-        return eventRepository.findById(id);
-    }
+    // @Override
+    // public IEvent getEvent(String id) {
+    //     return eventRepository.findById(id);
+    // }
 }

@@ -27,9 +27,9 @@ public class Course extends Event {
         Teacher = (Person) teacher;
     }
 
-    @Override
-    public Person getTeacher() throws Exception {
-        return this.Teacher;
-    }
+    // @Override
+    // public Person getTeacher() throws Exception {
+    //     return this.Teacher;
+    // }
 
 }

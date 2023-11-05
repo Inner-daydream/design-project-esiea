@@ -1,4 +1,4 @@
-package com.school.schoolapp.Application.response;
+package com.school.schoolapp.Application.response.conference;
 
 import java.util.UUID;
 

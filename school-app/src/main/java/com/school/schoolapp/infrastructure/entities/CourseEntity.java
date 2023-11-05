@@ -20,11 +20,11 @@ public class CourseEntity {
     public CourseEntity(Course course){
         this.id = course.getId().toString();
         this.isExam = course.isExam();
-        try {
-            this.teacher = new PersonEntity(course.getTeacher());
-        } catch (Exception e) {
-            this.teacher = null;
-        }
+        // try {
+        //     this.teacher = new PersonEntity(course.getTeacher());
+        // } catch (Exception e) {
+        //     this.teacher = null;
+        // }
     }
 
     public CourseEntity() {
