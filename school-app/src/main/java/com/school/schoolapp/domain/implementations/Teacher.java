@@ -4,12 +4,17 @@ import com.school.schoolapp.domain.Interfaces.IEvent;
 import com.school.schoolapp.domain.Interfaces.IPerson;
 import com.school.schoolapp.domain.abstractions.Event;
 import com.school.schoolapp.domain.abstractions.Person;
+import java.util.UUID;
 
 public class Teacher extends Person {
     private int salary;
 
-    public Teacher(String name, String phoneNumber, String address, School school, int salary) throws Exception {
-        super(name, phoneNumber, address, school);
+    public Teacher(String name, String phoneNumber, String address, int salary) throws Exception {
+        super(name, phoneNumber, address);
+        setSalary(salary);
+    }
+    public Teacher(String name, String phoneNumber, String address, int salary, UUID schoolID) throws Exception {
+        super(name, phoneNumber, address, schoolID);
         setSalary(salary);
     }
 

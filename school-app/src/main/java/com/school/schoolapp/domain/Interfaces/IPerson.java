@@ -1,16 +1,16 @@
 package com.school.schoolapp.domain.Interfaces;
 
 import com.school.schoolapp.domain.abstractions.Event;
-import com.school.schoolapp.domain.implementations.School;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface IPerson {
     String getName();
     String getPhoneNumber();
     String getAddress();
     List<Event> getEvents();
-    School getSchool();
+    UUID getSchoolID();
     void setName(String name);
     void setPhoneNumber(String phoneNumber);
     void setAddress(String address);

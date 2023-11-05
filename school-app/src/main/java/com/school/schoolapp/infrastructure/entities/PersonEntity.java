@@ -1,27 +1,24 @@
 package com.school.schoolapp.infrastructure.entities;
 
 import java.util.List;
+import java.util.UUID;
 
-import com.school.schoolapp.domain.implementations.School;
-
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
 
 import com.school.schoolapp.domain.abstractions.Person;
 import com.school.schoolapp.domain.abstractions.Event;
-
 @Entity
 public class PersonEntity {
     private String name;
     private String phoneNumber;
     private String address;
-    @ManyToOne
-    @JoinColumn(name = "school_id")
-    private SchoolEntity school;
+    @Column(name = "school_id")
+    private String schoolID;
     @ManyToMany
     @JoinTable(name = "person_event", joinColumns = @JoinColumn(name = "person_id"), inverseJoinColumns = @JoinColumn(name = "event_id"))
     private List<EventEntity> events;
@@ -36,7 +33,7 @@ public class PersonEntity {
         this.name = person.getName();
         this.phoneNumber = person.getPhoneNumber();
         this.address = person.getAddress();
-        this.school = new SchoolEntity(person.getSchool());
+        this.schoolID = person.getSchoolID().toString();
         this.id = person.getId().toString();
         for (Event eventEntity : person.getEvents()) {
             this.events.add(new EventEntity(eventEntity));
@@ -44,8 +41,8 @@ public class PersonEntity {
 
     }
 
-    public SchoolEntity getSchool() {
-        return school;
+    public String getSchoolID() {
+        return schoolID;
     }
 
     public List<EventEntity> getEvents() {
@@ -62,5 +59,8 @@ public class PersonEntity {
 
     public String getAddress() {
         return address;
+    }
+    public void setSchoolID(String id) {
+        this.schoolID = id;
     }
 }

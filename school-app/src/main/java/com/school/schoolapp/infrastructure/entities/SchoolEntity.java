@@ -4,6 +4,7 @@ import com.school.schoolapp.domain.implementations.School;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.List;
@@ -17,9 +18,6 @@ public class SchoolEntity {
     private String name;
     private String address;
     private String phoneNumber;
-
-    @OneToMany(mappedBy = "school")
-    private List<PersonEntity> people;
     public SchoolEntity() {
     }
 
@@ -28,10 +26,6 @@ public class SchoolEntity {
         this.name = school.getName();
         this.address = school.getAddress();
         this.phoneNumber = school.getPhoneNumber();
-        for (Person personEntity : school.getPeople()) {
-            this.people.add(new PersonEntity(personEntity));
-            
-        }
     }
     public String getId() {
         return id;

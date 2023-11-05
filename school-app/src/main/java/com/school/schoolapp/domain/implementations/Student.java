@@ -6,12 +6,20 @@ import com.school.schoolapp.domain.abstractions.Person;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+
 public class Student extends Person {
     private List<GradeEvent> grades;
     private int lunchCredit;
 
-    public Student(String name, String phoneNumber, String address, School school) {
-        super(name, phoneNumber, address, school);
+    public Student(String name, String phoneNumber, String address) {
+        super(name, phoneNumber, address);
+        lunchCredit = 0;
+        grades = new ArrayList<>();
+    }
+
+    public Student(String name, String phoneNumber, String address, UUID schoolID) {
+        super(name, phoneNumber, address, schoolID);
         lunchCredit = 0;
         grades = new ArrayList<>();
     }

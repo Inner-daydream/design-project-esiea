@@ -12,20 +12,28 @@ public abstract class Person implements IPerson {
     private String name;
     private String phoneNumber;
     private String address;
-    private School school;
+    private UUID schoolID;
     private List<Event> events;
 
 
 
     private UUID id;
 
-    public Person(String name, String phoneNumber, String address, School school) {
+    public Person(String name, String phoneNumber, String address) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.address = address;
-        this.school = school;
         this.events = new ArrayList<>();
         this.id = UUID.randomUUID();
+        this.schoolID = null;
+    }
+    public Person(String name, String phoneNumber, String address, UUID schoolID) {
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.events = new ArrayList<>();
+        this.id = UUID.randomUUID();
+        this.schoolID = schoolID;
     }
 
     public Person() {
@@ -36,8 +44,8 @@ public abstract class Person implements IPerson {
         return events.stream().filter(ievent -> ievent.getEventName().equals(event.getEventName())).findFirst().orElseThrow();
     }
     @Override
-    public School getSchool() {
-        return this.school;
+    public UUID  getSchoolID() {
+        return this.schoolID;
     }
     @Override
     public boolean equals(Object o) {

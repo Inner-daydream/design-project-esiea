@@ -24,6 +24,6 @@ public class CreateAdminRequest {
         this.salary = salary;
     }
     public Admin getAdmin(){
-        return new Admin(name, phoneNumber, address, null, salary);
+        return new Admin(name, phoneNumber, address, salary);
     }
 }

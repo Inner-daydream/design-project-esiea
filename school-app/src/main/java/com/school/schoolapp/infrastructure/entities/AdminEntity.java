@@ -1,8 +1,9 @@
 package com.school.schoolapp.infrastructure.entities;
 
-import com.school.schoolapp.domain.abstractions.Person;
 import com.school.schoolapp.domain.implementations.Admin;
 import jakarta.persistence.*;
+
+import java.util.UUID;
 
 @Entity
 public class AdminEntity {
@@ -34,7 +35,7 @@ public class AdminEntity {
     }
 
     public String getSchoolID() {
-        return person.getSchool().getId();
+        return person.getSchoolID();
     }
     public int getSalary() {
         return salary;

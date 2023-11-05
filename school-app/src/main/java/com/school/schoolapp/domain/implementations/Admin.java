@@ -1,5 +1,7 @@
 package com.school.schoolapp.domain.implementations;
 
+import java.util.UUID;
+
 import com.school.schoolapp.domain.Interfaces.IEvent;
 import com.school.schoolapp.domain.Interfaces.IPerson;
 import com.school.schoolapp.domain.abstractions.Person;
@@ -7,9 +9,14 @@ import com.school.schoolapp.domain.abstractions.Person;
 public class Admin extends Person {
     private int salary;
 
-    public Admin(String name, String phoneNumber, String address, School school, int salary) {
-        super(name, phoneNumber, address, school);
+    public Admin(String name, String phoneNumber, String address, int salary) {
+        super(name, phoneNumber, address);
         this.salary = salary;
+    }
+    public Admin(String name, String phoneNumber, String address, int salary, UUID schoolID) {
+        super(name, phoneNumber, address, schoolID);
+        this.salary = salary;
+
     }
 
     public int getSalary() {
