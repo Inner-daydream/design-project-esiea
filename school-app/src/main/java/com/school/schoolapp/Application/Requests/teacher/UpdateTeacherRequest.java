@@ -33,6 +33,6 @@ public class UpdateTeacherRequest {
     }
 
     public Teacher getTeacher(){
-        return new Teacher(UUID.fromString(id), name, phoneNumber, address, salary, UUID.fromString(schoolID));
+        return new Teacher(name, phoneNumber, address,  UUID.fromString(schoolID),  UUID.fromString(id),salary);
     }
 }

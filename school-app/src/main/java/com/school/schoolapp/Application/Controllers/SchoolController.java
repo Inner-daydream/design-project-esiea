@@ -18,24 +18,27 @@ import java.util.UUID;
 @RequestMapping("/api/school")
 public class SchoolController {
     private final SchoolService school;
-    
+
     @Autowired
     public SchoolController(SchoolService school) {
         this.school = school;
     }
+
     @PostMapping("/create")
-    public CreateSchoolResponse createSchool(@RequestBody CreateSchoolRequest request){
+    public CreateSchoolResponse createSchool(@RequestBody CreateSchoolRequest request) {
         UUID id = school.createSchool(request.getSchool());
         return new CreateSchoolResponse(id);
     }
+
     @GetMapping
-    public GetAllSchoolResponse getSchools(){
+    public GetAllSchoolResponse getSchools() {
         return new GetAllSchoolResponse(school.getAllSchool());
     }
-    
+
 
     @PutMapping("/update")
-    public void updateSchool(@RequestBody UpdateSchoolRequest request){
+    public void updateSchool(@RequestBody UpdateSchoolRequest request) {
         school.updateSchool(request.getSchool());
     }
+}
 
