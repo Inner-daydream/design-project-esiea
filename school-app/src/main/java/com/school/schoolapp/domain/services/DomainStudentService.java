@@ -33,4 +33,10 @@ public class DomainStudentService implements StudentService{
     }
 
 
+    @Override
+    public List<Student> getAllStudents() {
+        return studentRepository.findAll().get();
+    }
+
+
 }
