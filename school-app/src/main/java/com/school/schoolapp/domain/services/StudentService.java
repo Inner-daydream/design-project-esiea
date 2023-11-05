@@ -9,4 +9,6 @@ public interface StudentService {
     UUID createStudent(Student student);
     List<Student> getStudents(List<String> ids);
     void updateStudent(Student student);
+    List<Student> getAllStudents();
+
 }

@@ -73,4 +73,22 @@ public class PostgreStudentRepository implements StudentRepository {
         }
         return Optional.empty();
     }
+
+    @Override
+    public Optional<List<Student>> findAll() {
+        List<StudentEntity> studentEntity = this.postgreStudentDataRepository.findAll(); 
+        if(studentEntity.size() > 0) {
+            List<Student> students = studentEntity.stream().map(student -> {
+                return new Student(
+                    student.getName(),
+                    student.getPhoneNumber(),
+                    student.getAddress(),
+                    student.getLunchCredit(),
+                    UUID.fromString(student.getSchoolID())
+                );
+            }).toList();
+            return Optional.of(students);
+        }
+        return Optional.empty();
+    }
 }

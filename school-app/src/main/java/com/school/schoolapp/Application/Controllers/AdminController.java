@@ -3,7 +3,7 @@ package com.school.schoolapp.Application.Controllers;
 import com.school.schoolapp.Application.Requests.admin.CreateAdminRequest;
 import com.school.schoolapp.Application.Requests.admin.UpdateAdminRequest;
 import com.school.schoolapp.Application.response.admin.CreateAdminResponse;
-import com.school.schoolapp.Application.response.admin.GetAllAdminResponse;
+import com.school.schoolapp.Application.response.admin.GetAllAdminsResponse;
 import com.school.schoolapp.domain.services.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,8 +27,8 @@ public class AdminController {
         return new CreateAdminResponse(id);
     }
     @GetMapping
-    public GetAllAdminResponse getAdmin(){
-        return new GetAllAdminResponse(adminService.getAllAdmins());
+    public GetAllAdminsResponse getAdmin(){
+        return new GetAllAdminsResponse(adminService.getAllAdmins());
     }
 
     @PutMapping("/update")

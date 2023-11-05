@@ -3,7 +3,7 @@ package com.school.schoolapp.Application.Controllers;
 import com.school.schoolapp.Application.Requests.classroom.CreateClassroomRequest;
 import com.school.schoolapp.Application.Requests.classroom.UpdateClassroomRequest;
 import com.school.schoolapp.Application.response.classroom.CreateClassroomResponse;
-import com.school.schoolapp.Application.response.classroom.GetAllClassroomResponse;
+import com.school.schoolapp.Application.response.classroom.GetAllClassroomsResponse;
 import com.school.schoolapp.domain.services.ClassroomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +37,7 @@ public class ClassroomController {
         classroom.updateClassroom(request.getClassroom());
     }
     @GetMapping
-    public GetAllClassroomResponse getClassroom(){
-        return new GetAllClassroomResponse(classroom.getAllClassrooms());
+    public GetAllClassroomsResponse getClassroom(){
+        return new GetAllClassroomsResponse(classroom.getAllClassrooms());
     }
 }
