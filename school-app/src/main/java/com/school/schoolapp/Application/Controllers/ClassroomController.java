@@ -36,7 +36,7 @@ public class ClassroomController {
     public void updateClassroom(@RequestBody UpdateClassroomRequest request){
         classroom.updateClassroom(request.getClassroom());
     }
-    @GetMapping("/get")
+    @GetMapping
     public GetAllClassroomResponse getClassroom(){
         return new GetAllClassroomResponse(classroom.getAllClassrooms());
     }

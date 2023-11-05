@@ -1,5 +1,6 @@
 package com.school.schoolapp.infrastructure.repository.postgre;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,22 @@ public class PostgreSchoolRepository implements SchoolRepository {
             return Optional.of(school);
         }
         return Optional.empty();
+    }
+
+    @Override
+    public Optional<List<School>> findAll() {
+        List<SchoolEntity> schoolEntities = this.postgreSchoolDataRepository.findAll();
+        if (schoolEntities.size() > 0) {
+            List<School> school = schoolEntities.stream().map(schoolEntity -> 
+                new School(
+                    schoolEntity.getName(),
+                    schoolEntity.getAddress(), 
+                    schoolEntity.getPhoneNumber())
+                ).toList();
+            return Optional.of(school);
+        }
+        return Optional.empty();
+        
     }
 
 

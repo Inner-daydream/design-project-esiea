@@ -26,7 +26,7 @@ public class AdminController {
         UUID id = adminService.createAdmin(request.getAdmin());
         return new CreateAdminResponse(id);
     }
-    @GetMapping("/get")
+    @GetMapping
     public GetAllAdminResponse getAdmin(){
         return new GetAllAdminResponse(adminService.getAllAdmins());
     }
