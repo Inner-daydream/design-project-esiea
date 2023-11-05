@@ -18,9 +18,9 @@ public class Student extends Person {
         grades = new ArrayList<>();
     }
 
-    public Student(String name, String phoneNumber, String address, UUID schoolID) {
+    public Student(String name, String phoneNumber, String address, int lunchCredit, UUID schoolID) {
         super(name, phoneNumber, address, schoolID);
-        lunchCredit = 0;
+        this.lunchCredit = lunchCredit;
         grades = new ArrayList<>();
     }
 

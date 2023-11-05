@@ -3,6 +3,6 @@ import com.school.schoolapp.domain.implementations.Student;
 import java.util.Optional;
 
 public interface StudentRepository {
-    Optional<Student> findById(Long id);
+    Optional<Student> findById(String id);
     void save(Student student);
 }

@@ -1,15 +1,12 @@
 package com.school.schoolapp.infrastructure.configuration;
 
-import com.school.schoolapp.domain.ports.AdminRepository;
-import com.school.schoolapp.domain.ports.ClassroomRepository;
-import com.school.schoolapp.domain.ports.PersonRepository;
+import com.school.schoolapp.domain.ports.*;
 import com.school.schoolapp.domain.services.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import com.school.schoolapp.domain.ports.SchoolRepository;
 @Configuration
 public class BeanConfiguration {
     @Bean
@@ -30,5 +27,10 @@ public class BeanConfiguration {
     @Bean
     public PersonService personService(final PersonRepository personRepository){
         return new DomainPersonService(personRepository);
+    }
+
+    @Bean
+    public StudentService studentService(final StudentRepository studentRepository){
+        return new DomainStudentService(studentRepository);
     }
 }

@@ -3,6 +3,7 @@ package com.school.schoolapp.infrastructure.entities;
 import java.util.List;
 import java.util.UUID;
 
+import com.school.schoolapp.domain.Interfaces.IPerson;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -29,7 +30,7 @@ public class PersonEntity {
     public PersonEntity() {
     }
 
-    public PersonEntity(Person person) {
+    public PersonEntity(IPerson person) {
         this.name = person.getName();
         this.phoneNumber = person.getPhoneNumber();
         this.address = person.getAddress();

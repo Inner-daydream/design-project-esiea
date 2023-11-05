@@ -96,7 +96,7 @@ public abstract class Event implements IEvent {
         this.capacity = capacity;
     };
 
-
+    @Override
     public UUID getId() {
         return id;
     }

@@ -4,6 +4,7 @@ import com.school.schoolapp.domain.abstractions.Person;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 public interface IEvent {
     boolean isEventOptional();
@@ -21,4 +22,6 @@ public interface IEvent {
     void setPlace(IClassroom place);
     void setEventName(String name);
      void setCapacity(int capacity);
+
+    UUID getId();
 }
