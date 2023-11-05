@@ -1,12 +1,10 @@
 package com.school.schoolapp.infrastructure.entities;
 
 import com.school.schoolapp.domain.implementations.Teacher;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "teacher")
 public class TeacherEntity {
     @Id
     private String ID;

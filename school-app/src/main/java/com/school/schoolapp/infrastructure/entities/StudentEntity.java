@@ -2,12 +2,10 @@ package com.school.schoolapp.infrastructure.entities;
 
 import com.school.schoolapp.domain.Interfaces.IPerson;
 import com.school.schoolapp.domain.implementations.Student;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "student")
 public class StudentEntity {
     @Id
     private String ID;

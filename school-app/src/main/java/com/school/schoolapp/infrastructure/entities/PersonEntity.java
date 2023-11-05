@@ -4,16 +4,12 @@ import java.util.List;
 import java.util.UUID;
 
 import com.school.schoolapp.domain.Interfaces.IPerson;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 
 import com.school.schoolapp.domain.abstractions.Person;
 import com.school.schoolapp.domain.abstractions.Event;
 @Entity
+@Table(name = "person")
 public class PersonEntity {
     private String name;
     private String phoneNumber;

@@ -5,14 +5,16 @@ import com.school.schoolapp.domain.Interfaces.IProgram;
 import com.school.schoolapp.domain.abstractions.Event;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class Program implements IProgram {
     private String name;
     private List<Event> events;
 
-    private Long id;
+    private UUID id;
 
     public Program(String name) {
+        this.id = UUID.randomUUID();
         this.name = name;
         this.events = new ArrayList<>();
     }
@@ -37,12 +39,7 @@ public class Program implements IProgram {
     public IEvent getEventByName(String eventName) {
         return this.events.stream().filter(event -> event.getEventName().equals(eventName)).findFirst().orElseThrow();
     }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 }

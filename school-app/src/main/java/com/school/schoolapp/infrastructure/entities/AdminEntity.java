@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import java.util.UUID;
 
 @Entity
+@Table(name = "admin")
 public class AdminEntity {
     @Id
     private String ID;
