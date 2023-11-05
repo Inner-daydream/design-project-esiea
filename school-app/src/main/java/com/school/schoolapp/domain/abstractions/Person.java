@@ -108,4 +108,7 @@ public abstract class Person implements IPerson {
     public UUID getId() {
         return id;
     }
+    public void setId(UUID id) {
+        this.id = id;
+    }
 }

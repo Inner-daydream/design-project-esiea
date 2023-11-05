@@ -7,6 +7,6 @@ import java.util.Optional;
 public interface AdminRepository {
 
     Optional<Admin> findById(String id);
-
     void save(Admin admin);
+    void update(Admin admin);
 }

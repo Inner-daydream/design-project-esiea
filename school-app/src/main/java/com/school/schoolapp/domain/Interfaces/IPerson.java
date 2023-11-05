@@ -17,6 +17,5 @@ public interface IPerson {
     void addEvent(IEvent event);
     void removeEvent(int eventIndex);
     IEvent getEvent(IEvent event);
-
     UUID getId();
 }

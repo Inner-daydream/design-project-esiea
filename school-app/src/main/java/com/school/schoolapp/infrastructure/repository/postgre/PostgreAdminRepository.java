@@ -48,4 +48,12 @@ public class PostgreAdminRepository implements AdminRepository {
         this.personRepository.save(personEntity);
         this.postgreAdminDataRepository.save(adminEntity);
     }
+
+    @Override
+    public void update(Admin admin) {
+        AdminEntity adminEntity = new AdminEntity(admin);
+        PersonEntity personEntity = new PersonEntity(admin);
+        this.personRepository.save(personEntity);
+        this.postgreAdminDataRepository.save(adminEntity);
+    }
 }

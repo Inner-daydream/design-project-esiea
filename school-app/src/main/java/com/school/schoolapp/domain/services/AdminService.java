@@ -6,4 +6,6 @@ import java.util.UUID;
 
 public interface AdminService {
     UUID createAdmin(Admin admin);
+
+    void updateAdmin(Admin admin);
 }

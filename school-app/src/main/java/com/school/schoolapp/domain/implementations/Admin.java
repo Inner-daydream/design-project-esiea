@@ -9,6 +9,11 @@ import com.school.schoolapp.domain.abstractions.Person;
 public class Admin extends Person {
     private int salary;
 
+    public Admin(UUID id, String name, String phoneNumber, String address, int salary, UUID schoolID) {
+        super(name, phoneNumber, address, schoolID);
+        this.salary = salary;
+        this.setId(id);
+    }
     public Admin(String name, String phoneNumber, String address, int salary) {
         super(name, phoneNumber, address);
         this.salary = salary;

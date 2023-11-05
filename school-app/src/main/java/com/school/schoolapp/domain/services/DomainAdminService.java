@@ -16,4 +16,9 @@ public class DomainAdminService implements AdminService{
         adminRepository.save(admin);
         return admin.getId();
     }
+
+    @Override
+    public void updateAdmin(Admin admin) {
+        adminRepository.update(admin);
+    }
 }
