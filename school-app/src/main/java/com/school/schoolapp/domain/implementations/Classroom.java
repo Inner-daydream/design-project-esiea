@@ -2,11 +2,20 @@ package com.school.schoolapp.domain.implementations;
 
 import com.school.schoolapp.domain.Interfaces.IClassroom;
 
+import java.util.UUID;
+
 public class Classroom implements IClassroom {
     private String name;
     private String buildingName;
     private int capacity;
-    private Long id;
+    private UUID id;
+
+    public Classroom(String name, String buildingName, int capacity){
+        this.name = name;
+        this.buildingName = buildingName;
+        this.capacity = capacity;
+        this.id = UUID.randomUUID();
+    }
 
     public String getName() {
         return name;
@@ -32,11 +41,8 @@ public class Classroom implements IClassroom {
         this.buildingName = buildingName;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 }

@@ -23,4 +23,20 @@ public class ClassroomEntity {
         this.capacity = classroom.getCapacity();
         this.id = classroom.getId().toString();
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getBuildingName() {
+        return buildingName;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public String getId() {
+        return id;
+    }
 }
