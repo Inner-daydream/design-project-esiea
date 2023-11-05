@@ -1,14 +1,13 @@
 package com.school.schoolapp.domain.Interfaces;
-
-import com.school.schoolapp.domain.abstractions.Person;
-
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import com.school.schoolapp.domain.implementations.Student;
+
 public interface IEvent {
     boolean isOptional();
-    List<Person> getAttendees();
+    List<Student> getAttendees();
     UUID getId();
     Date getStartDate();
     Date getEndDate();

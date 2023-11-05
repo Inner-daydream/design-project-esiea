@@ -43,4 +43,9 @@ public class BeanConfiguration {
     public ProgramService programService(final ProgramRepository programRepository){
         return new DomainProgramService(programRepository);
     }
+
+    @Bean
+    public ConferenceService conferenceService(final ConferenceRepository conferenceRepository, final StudentRepository studentRepository){
+        return new DomainConferenceService(conferenceRepository, studentRepository);
+    }
 }

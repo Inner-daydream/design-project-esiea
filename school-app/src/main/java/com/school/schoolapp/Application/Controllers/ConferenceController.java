@@ -5,6 +5,8 @@ import com.school.schoolapp.Application.response.CreateConferenceResponse;
 import com.school.schoolapp.domain.services.ClassroomService;
 import com.school.schoolapp.domain.services.ConferenceService;
 import com.school.schoolapp.domain.services.PersonService;
+import com.school.schoolapp.domain.services.StudentService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,21 +17,25 @@ import java.util.UUID;
 public class ConferenceController {
 
     private final ConferenceService conferenceService;
-    private final PersonService personService;
+    private final StudentService studentService;
     private final ClassroomService classroomService;
+    private final PersonService personService;
 
     @Autowired
-    public ConferenceController(ConferenceService conferenceService, PersonService personService, ClassroomService classroomService) {
+    public ConferenceController(ConferenceService conferenceService, StudentService studentService, ClassroomService classroomService, PersonService personService) {
         this.conferenceService = conferenceService;
-        this.personService = personService;
+        this.studentService = studentService;
         this.classroomService = classroomService;
+        this.personService = personService;
     }
 
     @PostMapping("/create")
     public CreateConferenceResponse createConference(@RequestBody CreateConferenceRequest request){
-        List<String> studentsIDS = request.getStudentsIDs();
-        List<Student> students = new ArrayList<Student>();
-        UUID id = conferenceService.createConference(request.getConference());
+        UUID id = request.getConference(
+            this.studentService.getStudents(request.getStudentsIDs()),
+            this.personService.getPerson(request.getSpeakerID()),
+            this.classroomService.getClassroom(request.getClassroomID())
+        ).getId();
         return new CreateConferenceResponse(id);
     }
 

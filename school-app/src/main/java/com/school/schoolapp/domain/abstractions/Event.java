@@ -4,22 +4,23 @@ import com.school.schoolapp.domain.Interfaces.IClassroom;
 import com.school.schoolapp.domain.Interfaces.IPerson;
 import com.school.schoolapp.domain.implementations.Classroom;
 import com.school.schoolapp.domain.Interfaces.IEvent;
+import com.school.schoolapp.domain.implementations.Student;
 
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-public abstract class Event implements IEvent {
+public abstract class   Event implements IEvent {
     private String name;
     private Classroom classroom;
     private Date startDate;
     private Date endDate;
-    private List<Person> students;
+    private List<Student> students;
     private int capacity;
     private boolean isOptional;
     private UUID id;
 
-    public Event(String name, Classroom classroom, Date startDate, Date endDate, List<Person> students, int capacity, boolean isOptional){
+    public Event(String name, Classroom classroom, Date startDate, Date endDate, List<Student> students, int capacity, boolean isOptional){
         this.name = name;
         this.classroom = classroom;
         this.startDate = startDate;
@@ -32,7 +33,7 @@ public abstract class Event implements IEvent {
     public Classroom getClassroom() {
         return classroom;
     }
-    public List<Person> getStudents() {
+    public List<Student> getStudents() {
         return students;
     }
     public boolean isOptional() {
@@ -41,7 +42,7 @@ public abstract class Event implements IEvent {
     public boolean isEventOptional(){
         return isOptional;
     };
-    public List<Person> getAttendees(){
+    public List<Student> getAttendees(){
         return students;
     };
     public Date getStartDate(){

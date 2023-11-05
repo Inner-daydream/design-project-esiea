@@ -4,6 +4,7 @@ import com.school.schoolapp.domain.Interfaces.IPerson;
 import com.school.schoolapp.domain.implementations.Student;
 import com.school.schoolapp.domain.ports.StudentRepository;
 
+import java.util.List;
 import java.util.UUID;
 
 public class DomainStudentService implements StudentService{
@@ -19,4 +20,13 @@ public class DomainStudentService implements StudentService{
         studentRepository.save(student);
         return student.getId();
     }
+
+
+    @Override
+    public List<Student> getStudents(List<String> ids) {
+        return studentRepository.findAllById(ids).get();
+    }
+
+    
+
 }

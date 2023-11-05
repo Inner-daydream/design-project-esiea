@@ -2,7 +2,7 @@ package com.school.schoolapp.Application.Requests;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.school.schoolapp.domain.abstractions.Person;
+import com.school.schoolapp.domain.Interfaces.IPerson;
 import com.school.schoolapp.domain.implementations.Admin;
 import com.school.schoolapp.domain.implementations.Classroom;
 import com.school.schoolapp.domain.implementations.Conference;
@@ -16,43 +16,43 @@ public class CreateConferenceRequest {
     @NotNull
     private String name;
     @NotNull
-    private String classroom;
+    private String classroomID;
     @NotNull
     private Date startDate;
     @NotNull
     private Date endDate;
     @NotNull
-    private List<String> students;
+    private List<String> studentsIDs;
     @NotNull
     private int capacity;
     @NotNull
     private boolean isOptional;
     @NotNull
-    private String speaker;
+    private String speakerID;
 
 
     @JsonCreator
-    public CreateConferenceRequest(@JsonProperty("name") String name, @JsonProperty("classroomID") String classroomID, @JsonProperty("startDate") String startDate, @JsonProperty("endDate") String endDate, @JsonProperty("studentsIDs") List<String> students, @JsonProperty("capacity") int capacity, @JsonProperty("isOptional") boolean isOptional, @JsonProperty("speaker") String speaker) {
+    public CreateConferenceRequest(@JsonProperty("name") String name, @JsonProperty("classroomID") String classroomID, @JsonProperty("startDate") String startDate, @JsonProperty("endDate") String endDate, @JsonProperty("studentsIDs") List<String> students, @JsonProperty("capacity") int capacity, @JsonProperty("isOptional") boolean isOptional, @JsonProperty("speaker") String speakerID) {
         this.name = name;
-        this.classroom = classroomID;
-        this.startDate = Date.valueOf(startDate);
-        this.endDate = Date.valueOf(endDate);
+        this.classroomID = classroomID;
+        this.startDate = new Date(Long.parseLong(startDate) * 1000);
+        this.endDate = new Date(Long.parseLong(endDate) * 1000);
         this.capacity = capacity;
         this.isOptional = isOptional;
-        this.speaker = speaker;
+        this.speakerID = speakerID;
     }
     
-    public Conference getConference(List<Person> students, Person speaker, Classroom classroom) {
+    public Conference getConference(List<Student> students, IPerson speaker, Classroom classroom) {
         return new Conference(name, classroom, startDate, endDate, students, capacity, isOptional, speaker);
     }
     public String getSpeakerID() {
-        return speaker;
+        return speakerID;
     }
     public List<String> getStudentsIDs() {
-        return students;
+        return studentsIDs;
     }
     public String getClassroomID() {
-        return classroom;
+        return classroomID;
     }
 
 }

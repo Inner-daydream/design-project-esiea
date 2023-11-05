@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.school.schoolapp.domain.Interfaces.IEvent;
 import com.school.schoolapp.domain.abstractions.Event;
-import com.school.schoolapp.domain.abstractions.Person;
+import com.school.schoolapp.domain.Interfaces.IPerson;
 import com.school.schoolapp.domain.implementations.Conference;
 import com.school.schoolapp.domain.implementations.Student;
 
@@ -45,7 +45,7 @@ public class EventEntity {
         this.capacity = event.getCapacity();
         this.isOptional = event.isOptional();
         this.id = event.getId().toString();
-        for (Person person : event.getAttendees()) {
+        for (IPerson person : event.getAttendees()) {
             this.attendees.add(new PersonEntity(person));
         }
     }

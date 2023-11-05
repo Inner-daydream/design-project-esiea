@@ -3,6 +3,7 @@ package com.school.schoolapp.domain.services;
 import com.school.schoolapp.domain.implementations.Classroom;
 import com.school.schoolapp.domain.ports.ClassroomRepository;
 
+import java.util.Optional;
 import java.util.UUID;
 
 public class DomainClassroomService implements ClassroomService{
@@ -16,4 +17,10 @@ public class DomainClassroomService implements ClassroomService{
         classroomRepository.save(classroom);
         return classroom.getId();
     }
+
+    @Override
+    public Classroom getClassroom(String id) {
+        return classroomRepository.findById(id).orElseThrow(() -> new RuntimeException("Classroom not found"));
+    }
+    
 }

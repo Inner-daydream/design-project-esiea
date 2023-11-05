@@ -7,6 +7,7 @@ import com.school.schoolapp.infrastructure.entities.StudentEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -45,5 +46,23 @@ public class PostgreStudentRepository implements StudentRepository {
         PersonEntity personEntity = new PersonEntity(student);
         this.personRepository.save(personEntity);
         this.postgreStudentDataRepository.save(studentEntity);
+    }
+
+    @Override
+    public Optional<List<Student>> findAllById(List<String> ids) {
+        List<StudentEntity> studentEntity = this.postgreStudentDataRepository.findAllById(ids); 
+        if(studentEntity.size() > 0) {
+            List<Student> students = studentEntity.stream().map(student -> {
+                return new Student(
+                    student.getName(),
+                    student.getPhoneNumber(),
+                    student.getAddress(),
+                    student.getLunchCredit(),
+                    UUID.fromString(student.getSchoolID())
+                );
+            }).toList();
+            return Optional.of(students);
+        }
+        return Optional.empty();
     }
 }

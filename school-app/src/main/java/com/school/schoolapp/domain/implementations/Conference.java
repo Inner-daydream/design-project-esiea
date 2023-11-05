@@ -11,7 +11,7 @@ import com.school.schoolapp.domain.abstractions.Person;
 
 public class Conference extends Event {
     private Person speaker;
-    public Conference(String name, Classroom classroom, Date startDate, Date endDate, List<Person> students, int capacity, boolean isOptional, IPerson speaker) {
+    public Conference(String name, Classroom classroom, Date startDate, Date endDate, List<Student> students, int capacity, boolean isOptional, IPerson speaker) {
         super(name, classroom, startDate, endDate, students, capacity, isOptional);
         this.speaker = (Person) speaker;
     }

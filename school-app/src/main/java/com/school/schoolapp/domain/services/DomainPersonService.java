@@ -3,6 +3,7 @@ package com.school.schoolapp.domain.services;
 import com.school.schoolapp.domain.abstractions.Person;
 import com.school.schoolapp.domain.ports.PersonRepository;
 
+import java.util.Optional;
 import java.util.UUID;
 
 public class DomainPersonService implements PersonService{
@@ -17,4 +18,10 @@ public class DomainPersonService implements PersonService{
         personRepository.save(person);
         return person.getId();
     }
+
+    @Override
+    public Person getPerson(String id) {
+        return personRepository.findById(id).orElseThrow(() -> new RuntimeException("Person not found"));
+    }
+    
 }

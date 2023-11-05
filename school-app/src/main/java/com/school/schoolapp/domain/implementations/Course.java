@@ -20,7 +20,7 @@ public class Course extends Event {
         return Teacher = (Person) teacher;
     }
 
-    public Course(boolean isExam, IPerson teacher, String name, Classroom classroom, Date startDate, Date endDate, List<Person> students, int capacity, boolean isOptional) {
+    public Course(boolean isExam, IPerson teacher, String name, Classroom classroom, Date startDate, Date endDate, List<Student> students, int capacity, boolean isOptional) {
         super(name, classroom, startDate, endDate, students, capacity, isOptional);
         this.isExam = isExam;
         Teacher = (Person) teacher;

@@ -24,4 +24,11 @@ public class PostgrePersonRepository implements PersonRepository {
         PersonEntity personEntity = new PersonEntity(person);
         this.postgrePersonDataRepository.save(personEntity);
     }
+    @Override
+    public Optional<Person> findById(String id) {
+        Optional<PersonEntity> personEntity = this.postgrePersonDataRepository.findById(id);
+        if(personEntity.isPresent()) {
+        }
+        return Optional.empty();
+    }
 }
