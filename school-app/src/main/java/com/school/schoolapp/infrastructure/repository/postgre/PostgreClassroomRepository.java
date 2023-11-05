@@ -3,11 +3,13 @@ package com.school.schoolapp.infrastructure.repository.postgre;
 import com.school.schoolapp.domain.implementations.Classroom;
 import com.school.schoolapp.domain.ports.ClassroomRepository;
 import com.school.schoolapp.infrastructure.entities.ClassroomEntity;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 import java.util.UUID;
+import java.util.List;
 
 @Component
 public class PostgreClassroomRepository implements ClassroomRepository {
@@ -41,4 +43,18 @@ public class PostgreClassroomRepository implements ClassroomRepository {
     }
 
 
+    public Optional<List<Classroom>> findAll() {
+        List<ClassroomEntity> classroomEntities = this.postgreClassroomDataRepository.findAll();
+        if (classroomEntities.size() > 0) {
+            List<Classroom> classrooms = classroomEntities.stream().map(classroomEntity ->
+                new Classroom(
+                    classroomEntity.getName(),
+                    classroomEntity.getBuildingName(), 
+                    classroomEntity.getCapacity(), 
+                    UUID.fromString(classroomEntity.getId())
+                )).toList();
+            return Optional.of(classrooms);
+        }
+        return Optional.empty();
+    }
 }

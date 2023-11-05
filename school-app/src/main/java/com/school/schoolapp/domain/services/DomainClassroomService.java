@@ -5,6 +5,7 @@ import com.school.schoolapp.domain.ports.ClassroomRepository;
 
 import java.util.Optional;
 import java.util.UUID;
+import java.util.List;
 
 public class DomainClassroomService implements ClassroomService{
     private final ClassroomRepository classroomRepository;
@@ -28,4 +29,8 @@ public class DomainClassroomService implements ClassroomService{
         classroomRepository.update(classroom);
     }
 
+    public List<Classroom> getAllClassrooms() {
+        return classroomRepository.findAll().get();
+    }
+    
 }
