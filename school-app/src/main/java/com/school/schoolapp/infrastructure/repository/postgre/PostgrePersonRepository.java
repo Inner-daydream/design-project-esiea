@@ -34,6 +34,7 @@ public class PostgrePersonRepository implements PersonRepository {
                     personEntity.get().getAddress(),
                     0
             );
+
             return Optional.of(admin);
         }
         return Optional.empty();

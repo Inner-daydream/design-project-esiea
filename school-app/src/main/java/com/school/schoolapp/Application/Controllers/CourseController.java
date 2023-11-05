@@ -16,15 +16,15 @@ import java.util.UUID;
 public class CourseController {
 
     private final CourseService courseService;
-    private final PersonService personService;
+    private final TeacherService teacherService;
     private final ClassroomService classroomService;
 
     private final StudentService studentService;
 
     @Autowired
-    public CourseController(CourseService courseService, PersonService personService, ClassroomService classroomService, StudentService studentService) {
+    public CourseController(CourseService courseService, TeacherService teacherService, ClassroomService classroomService, StudentService studentService) {
         this.courseService = courseService;
-        this.personService = personService;
+        this.teacherService = teacherService;
         this.classroomService = classroomService;
         this.studentService = studentService;
     }
@@ -35,7 +35,7 @@ public class CourseController {
                 request.getCourse(
                         this.classroomService.getClassroom(request.getClassroomID()),
                         this.studentService.getStudents(request.getStudentsIDs()),
-                        this.personService.getPerson(request.getTeacherId())
+                        this.teacherService.getTeacher(request.getTeacherId())
                         )
         );
         return new CreateCourseResponse(id);
