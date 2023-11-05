@@ -16,4 +16,9 @@ public class DomainTeacherService implements TeacherService{
         teacherRepository.save(teacher);
         return teacher.getId();
     }
+
+    @Override
+    public void updateTeacher(Teacher teacher) {
+        teacherRepository.update(teacher);
+    }
 }

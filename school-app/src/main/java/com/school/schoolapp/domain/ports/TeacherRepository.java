@@ -6,6 +6,6 @@ import java.util.Optional;
 
 public interface TeacherRepository {
     Optional<Teacher> findById(String id);
-
+    void update(Teacher teacher);
     void save(Teacher teacher);
 }

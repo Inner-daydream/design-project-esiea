@@ -18,6 +18,12 @@ public class Teacher extends Person {
         setSalary(salary);
     }
 
+    public Teacher(UUID id, String name, String phoneNumber, String address, int salary, UUID schoolID) {
+        super(name, phoneNumber, address, schoolID);
+        setSalary(salary);
+        this.setId(id);
+    }
+
     public int getSalary() {
         return salary;
     }

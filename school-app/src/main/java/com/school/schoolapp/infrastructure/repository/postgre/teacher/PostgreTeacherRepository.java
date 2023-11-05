@@ -41,6 +41,14 @@ public class PostgreTeacherRepository implements TeacherRepository {
     }
 
     @Override
+    public void update(Teacher teacher) {
+        TeacherEntity teacherEntity = new TeacherEntity(teacher);
+        PersonEntity personEntity = new PersonEntity(teacher);
+        this.personRepository.save(personEntity);
+        this.postgreTeacherDataRepository.save(teacherEntity);
+    }
+
+    @Override
     public void save(Teacher teacher) {
         TeacherEntity teacherEntity = new TeacherEntity(teacher);
         PersonEntity personEntity = new PersonEntity(teacher);
