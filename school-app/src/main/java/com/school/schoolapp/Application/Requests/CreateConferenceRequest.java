@@ -35,6 +35,7 @@ public class CreateConferenceRequest {
     public CreateConferenceRequest(@JsonProperty("name") String name, @JsonProperty("classroomID") String classroomID, @JsonProperty("startDate") String startDate, @JsonProperty("endDate") String endDate, @JsonProperty("studentsIDs") List<String> students, @JsonProperty("capacity") int capacity, @JsonProperty("isOptional") boolean isOptional, @JsonProperty("speaker") String speakerID) {
         this.name = name;
         this.classroomID = classroomID;
+        this.studentsIDs = students;
         this.startDate = new Date(Long.parseLong(startDate) * 1000);
         this.endDate = new Date(Long.parseLong(endDate) * 1000);
         this.capacity = capacity;

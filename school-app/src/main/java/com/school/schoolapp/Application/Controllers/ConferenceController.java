@@ -31,11 +31,13 @@ public class ConferenceController {
 
     @PostMapping("/create")
     public CreateConferenceResponse createConference(@RequestBody CreateConferenceRequest request){
-        UUID id = request.getConference(
-            this.studentService.getStudents(request.getStudentsIDs()),
-            this.personService.getPerson(request.getSpeakerID()),
-            this.classroomService.getClassroom(request.getClassroomID())
-        ).getId();
+        UUID id = conferenceService.createConference(
+                request.getConference(
+                        this.studentService.getStudents(request.getStudentsIDs()),
+                        this.personService.getPerson(request.getSpeakerID()),
+                        this.classroomService.getClassroom(request.getClassroomID())
+                )
+        );
         return new CreateConferenceResponse(id);
     }
 

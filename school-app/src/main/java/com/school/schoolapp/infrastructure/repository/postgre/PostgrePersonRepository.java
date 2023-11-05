@@ -28,6 +28,13 @@ public class PostgrePersonRepository implements PersonRepository {
     public Optional<Person> findById(String id) {
         Optional<PersonEntity> personEntity = this.postgrePersonDataRepository.findById(id);
         if(personEntity.isPresent()) {
+            Admin admin = new Admin(
+                    personEntity.get().getName(),
+                    personEntity.get().getPhoneNumber(),
+                    personEntity.get().getAddress(),
+                    0
+            );
+            return Optional.of(admin);
         }
         return Optional.empty();
     }

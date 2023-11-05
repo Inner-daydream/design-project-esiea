@@ -18,14 +18,5 @@ public class Conference extends Event {
     public Person getSpeaker() {
         return speaker;
     }
-    @Override
-    public String getName() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getEventName'");
-    }
-    @Override
-    public int getCapacity() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getEventCapacity'");
-    }
+
 }

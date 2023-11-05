@@ -24,5 +24,6 @@ public class ConferenceEntity {
     public ConferenceEntity(Conference conference) {
         this.ID = conference.getId().toString();
         this.event = new EventEntity(conference);
+        this.speaker = null;
     }
 }

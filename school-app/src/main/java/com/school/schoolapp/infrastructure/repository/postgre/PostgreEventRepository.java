@@ -7,6 +7,9 @@ import com.school.schoolapp.domain.ports.EventRepository;
 import com.school.schoolapp.infrastructure.entities.EventEntity;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class PostgreEventRepository implements EventRepository {
     private final PostgreEventDataRepository postgreEventDataRepository;
     @Autowired

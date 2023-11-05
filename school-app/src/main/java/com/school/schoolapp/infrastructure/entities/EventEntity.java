@@ -26,9 +26,9 @@ public class EventEntity {
     private ClassroomEntity classroom;
     private Date startDate;
     private Date endDate;
-    @ManyToMany
+    /*@ManyToMany
     @JoinTable(name = "person_event", joinColumns = @JoinColumn(name = "event_id"), inverseJoinColumns = @JoinColumn(name = "person_id"))
-    private List<PersonEntity> attendees;
+    private List<PersonEntity> attendees;*/
     private int capacity;
     private boolean isOptional;
     
@@ -45,8 +45,64 @@ public class EventEntity {
         this.capacity = event.getCapacity();
         this.isOptional = event.isOptional();
         this.id = event.getId().toString();
-        for (IPerson person : event.getAttendees()) {
+        /*for (IPerson person : event.getAttendees()) {
             this.attendees.add(new PersonEntity(person));
-        }
+        }*/
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public ClassroomEntity getClassroom() {
+        return classroom;
+    }
+
+    public void setClassroom(ClassroomEntity classroom) {
+        this.classroom = classroom;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
+    public boolean isOptional() {
+        return isOptional;
+    }
+
+    public void setOptional(boolean optional) {
+        isOptional = optional;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

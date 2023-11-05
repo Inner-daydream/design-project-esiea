@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Component
 public class PostgreClassroomRepository implements ClassroomRepository {
@@ -21,7 +22,7 @@ public class PostgreClassroomRepository implements ClassroomRepository {
     public Optional<Classroom> findById(String id) {
         Optional<ClassroomEntity> classroomEntity = this.postgreClassroomDataRepository.findById(id);
         if (classroomEntity.isPresent()) {
-            Classroom classroom = new Classroom(classroomEntity.get().getName(), classroomEntity.get().getBuildingName(), classroomEntity.get().getCapacity());
+            Classroom classroom = new Classroom(classroomEntity.get().getName(), classroomEntity.get().getBuildingName(), classroomEntity.get().getCapacity(), UUID.fromString(classroomEntity.get().getId()));
             return Optional.of(classroom);
         }
         return Optional.empty();

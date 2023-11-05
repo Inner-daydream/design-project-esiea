@@ -17,6 +17,13 @@ public class Classroom implements IClassroom {
         this.id = UUID.randomUUID();
     }
 
+    public Classroom(String name, String buildingName, int capacity, UUID id){
+        this.name = name;
+        this.buildingName = buildingName;
+        this.capacity = capacity;
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
