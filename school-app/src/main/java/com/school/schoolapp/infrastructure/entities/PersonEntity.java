@@ -44,4 +44,23 @@ public class PersonEntity {
 
     }
 
+    public SchoolEntity getSchool() {
+        return school;
+    }
+
+    public List<EventEntity> getEvents() {
+        return events;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getAddress() {
+        return address;
+    }
 }

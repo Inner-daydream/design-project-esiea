@@ -17,7 +17,6 @@ public class PostgreClassroomRepository implements ClassroomRepository {
         this.postgreClassroomDataRepository = postgreClassroomDataRepository;
     }
 
-
     @Override
     public Optional<Classroom> findById(String id) {
         Optional<ClassroomEntity> classroomEntity = this.postgreClassroomDataRepository.findById(id);

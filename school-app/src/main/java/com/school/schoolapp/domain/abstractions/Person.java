@@ -6,6 +6,8 @@ import com.school.schoolapp.domain.Interfaces.IEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
+
 public abstract class Person implements IPerson {
     private String name;
     private String phoneNumber;
@@ -13,7 +15,9 @@ public abstract class Person implements IPerson {
     private School school;
     private List<Event> events;
 
-    private Long id;
+
+
+    private UUID id;
 
     public Person(String name, String phoneNumber, String address, School school) {
         this.name = name;
@@ -21,12 +25,12 @@ public abstract class Person implements IPerson {
         this.address = address;
         this.school = school;
         this.events = new ArrayList<>();
+        this.id = UUID.randomUUID();
     }
 
     public Person() {
 
     }
-
     @Override
     public IEvent getEvent(IEvent event){
         return events.stream().filter(ievent -> ievent.getEventName().equals(event.getEventName())).findFirst().orElseThrow();
@@ -93,12 +97,7 @@ public abstract class Person implements IPerson {
             events.remove(eventIndex);
         }
     }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 }
