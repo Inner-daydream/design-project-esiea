@@ -3,6 +3,7 @@ package com.school.schoolapp.Application.Controllers;
 import com.school.schoolapp.Application.Requests.admin.CreateAdminRequest;
 import com.school.schoolapp.Application.Requests.admin.UpdateAdminRequest;
 import com.school.schoolapp.Application.response.admin.CreateAdminResponse;
+import com.school.schoolapp.Application.response.admin.GetAllAdminResponse;
 import com.school.schoolapp.domain.services.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +25,10 @@ public class AdminController {
     public CreateAdminResponse createAdmin(@RequestBody CreateAdminRequest request){
         UUID id = adminService.createAdmin(request.getAdmin());
         return new CreateAdminResponse(id);
+    }
+    @GetMapping("/get")
+    public GetAllAdminResponse getAdmin(){
+        return new GetAllAdminResponse(adminService.getAllAdmins());
     }
 
     @PutMapping("/update")

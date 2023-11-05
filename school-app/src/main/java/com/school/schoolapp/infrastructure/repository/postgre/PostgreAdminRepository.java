@@ -7,6 +7,7 @@ import com.school.schoolapp.infrastructure.entities.PersonEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -56,4 +57,21 @@ public class PostgreAdminRepository implements AdminRepository {
         this.personRepository.save(personEntity);
         this.postgreAdminDataRepository.save(adminEntity);
     }
+    public Optional<List<Admin>> findAll() {
+        List<AdminEntity> adminEntities = this.postgreAdminDataRepository.findAll();
+        if (adminEntities.size() > 0) {
+            List<Admin> admins = adminEntities.stream().map(admin -> {
+                return new Admin(
+                        admin.getName(),
+                        admin.getPhoneNumber(),
+                        admin.getAddress(),
+                        admin.getSalary(),
+                        UUID.fromString(admin.getSchoolID())
+                );
+            }).toList();
+            return Optional.of(admins);
+        }
+        return Optional.empty();
+    }
+
 }
