@@ -19,7 +19,6 @@ public class CourseEntity {
     private String id;
     public CourseEntity(Course course){
         this.id = course.getId().toString();
-        this.event = new EventEntity(course);
         this.isExam = course.isExam();
         try {
             this.teacher = new PersonEntity(course.getTeacher());
