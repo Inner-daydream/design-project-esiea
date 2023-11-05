@@ -9,11 +9,11 @@ import java.util.UUID;
 public class Teacher extends Person {
     private int salary;
 
-    public Teacher(String name, String phoneNumber, String address, int salary) throws Exception {
+    public Teacher(String name, String phoneNumber, String address, int salary) {
         super(name, phoneNumber, address);
         setSalary(salary);
     }
-    public Teacher(String name, String phoneNumber, String address, int salary, UUID schoolID) throws Exception {
+    public Teacher(String name, String phoneNumber, String address, int salary, UUID schoolID) {
         super(name, phoneNumber, address, schoolID);
         setSalary(salary);
     }
@@ -22,10 +22,7 @@ public class Teacher extends Person {
         return salary;
     }
 
-    public void setSalary(int salary) throws Exception {
-        if (salary < 0){
-            throw new Exception("Salary cannot be negative");
-        }
+    public void setSalary(int salary) {
         this.salary = salary;
     }
 

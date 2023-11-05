@@ -33,4 +33,9 @@ public class BeanConfiguration {
     public StudentService studentService(final StudentRepository studentRepository){
         return new DomainStudentService(studentRepository);
     }
+
+    @Bean
+    public TeacherService teacherService(final TeacherRepository teacherRepository){
+        return new DomainTeacherService(teacherRepository);
+    }
 }

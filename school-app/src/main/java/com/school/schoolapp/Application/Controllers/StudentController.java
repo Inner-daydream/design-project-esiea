@@ -15,12 +15,10 @@ import java.util.UUID;
 @RequestMapping("/api/student")
 public class StudentController {
     private final StudentService student;
-    private final PersonService personService;
 
     @Autowired
-    public StudentController(StudentService student, PersonService personService) {
+    public StudentController(StudentService student) {
         this.student = student;
-        this.personService = personService;
     }
 
     @PostMapping("/create")

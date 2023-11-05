@@ -14,12 +14,10 @@ import java.util.UUID;
 public class AdminController {
 
     private final AdminService adminService;
-    private final PersonService personService;
 
     @Autowired
-    public AdminController(AdminService adminService, PersonService personService) {
+    public AdminController(AdminService adminService) {
         this.adminService = adminService;
-        this.personService = personService;
     }
 
     @PostMapping("/create")
