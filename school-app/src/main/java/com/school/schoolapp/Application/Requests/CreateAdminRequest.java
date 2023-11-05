@@ -6,6 +6,7 @@ import com.school.schoolapp.domain.abstractions.Person;
 import com.school.schoolapp.domain.implementations.Admin;
 
 import javax.validation.constraints.NotNull;
+import java.util.UUID;
 
 public class CreateAdminRequest {
 
@@ -24,6 +25,6 @@ public class CreateAdminRequest {
         this.salary = salary;
     }
     public Admin getAdmin(){
-        return new Admin(name, phoneNumber, address, salary);
+        return new Admin(name, phoneNumber, address, salary, UUID.fromString(this.schoolID));
     }
 }
