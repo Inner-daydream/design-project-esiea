@@ -7,4 +7,5 @@ import java.util.UUID;
 public interface TeacherService {
     UUID createTeacher(Teacher teacher);
     void updateTeacher(Teacher teacher);
+    Teacher getTeacher(String id);
 }

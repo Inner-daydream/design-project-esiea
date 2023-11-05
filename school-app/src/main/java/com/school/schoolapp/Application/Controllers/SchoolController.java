@@ -39,4 +39,3 @@ public class SchoolController {
         school.updateSchool(request.getSchool());
     }
 
-}

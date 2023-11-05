@@ -1,27 +1,38 @@
 package com.school.schoolapp.domain.implementations;
 
 import com.school.schoolapp.domain.Interfaces.IEvent;
+import com.school.schoolapp.domain.Interfaces.IPerson;
 import com.school.schoolapp.domain.abstractions.Event;
 import com.school.schoolapp.domain.abstractions.Person;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class GradeEvent {
-    private Event event;
-    private Person person;
+    private IEvent event;
+    private IPerson person;
 
     private List<Float> grades;
-    private Long id;
+    private UUID id;
 
-    public GradeEvent(Event event, Person person) {
+    public GradeEvent(IEvent event, IPerson person) {
         this.event = event;
         this.person = person;
         this.grades = new ArrayList<>();
+        this.id = UUID.randomUUID();
     }
 
     public GradeEvent() {
 
+    }
+
+    public List<Float> getGrades() {
+        return grades;
+    }
+
+    public IPerson getPerson() {
+        return person;
     }
 
     public IEvent getEvent() {
@@ -45,11 +56,8 @@ public class GradeEvent {
         return sum / grades.size();
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 }

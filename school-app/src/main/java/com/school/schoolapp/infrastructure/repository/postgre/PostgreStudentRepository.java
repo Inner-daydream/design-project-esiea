@@ -65,8 +65,9 @@ public class PostgreStudentRepository implements StudentRepository {
                     student.getName(),
                     student.getPhoneNumber(),
                     student.getAddress(),
-                    student.getLunchCredit(),
-                    UUID.fromString(student.getSchoolID())
+                    UUID.fromString(student.getSchoolID()),
+                    UUID.fromString(student.getID()),
+                    student.getLunchCredit()
                 );
             }).toList();
             return Optional.of(students);

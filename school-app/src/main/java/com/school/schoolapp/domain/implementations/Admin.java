@@ -52,4 +52,5 @@ public class Admin extends Person {
         // Implémentez la logique pour ajouter un événement à un programme spécifié.
     }
 
+
 }

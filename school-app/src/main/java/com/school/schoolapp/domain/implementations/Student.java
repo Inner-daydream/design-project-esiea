@@ -5,6 +5,7 @@ import com.school.schoolapp.domain.abstractions.Event;
 import com.school.schoolapp.domain.abstractions.Person;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
 
@@ -29,6 +30,12 @@ public class Student extends Person {
         super(name, phoneNumber, address, schoolID);
         this.lunchCredit = lunchCredit;
         grades = new ArrayList<>();
+    }
+
+    public Student(String name, String phoneNumber, String address, UUID schoolID, UUID id, int lunchCredit) {
+        super(name, phoneNumber, address, schoolID, id);
+        this.grades = new LinkedList<>(); //a voir
+        this.lunchCredit = lunchCredit;
     }
 
     public int getLunchCredit() {

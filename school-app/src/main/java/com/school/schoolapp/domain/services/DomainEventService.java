@@ -16,4 +16,9 @@ public class DomainEventService implements EventService{
         eventRepository.save(event);
         return event.getId();
     }
+
+    @Override
+    public IEvent getEvent(String id) {
+        return eventRepository.findById(id);
+    }
 }

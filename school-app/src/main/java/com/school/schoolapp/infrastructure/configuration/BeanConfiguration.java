@@ -28,6 +28,15 @@ public class BeanConfiguration {
     public PersonService personService(final PersonRepository personRepository){
         return new DomainPersonService(personRepository);
     }
+    @Bean
+    public EventService eventService(final EventRepository eventRepository){
+        return new DomainEventService(eventRepository);
+    }
+    @Bean
+    public GradeEventService gradeEventService(final GradeEventRepository gradeEventRepository){
+        return new DomainGradeEventService(gradeEventRepository);
+    }
+
 
     @Bean
     public StudentService studentService(final StudentRepository studentRepository){
@@ -43,7 +52,10 @@ public class BeanConfiguration {
     public ProgramService programService(final ProgramRepository programRepository){
         return new DomainProgramService(programRepository);
     }
-
+    @Bean
+    public CourseService courseService(final CourseRepository courseRepository){
+        return new DomainCourseService(courseRepository);
+    }
     @Bean
     public ConferenceService conferenceService(final ConferenceRepository conferenceRepository, final StudentRepository studentRepository){
         return new DomainConferenceService(conferenceRepository, studentRepository);

@@ -1,5 +1,6 @@
 package com.school.schoolapp.infrastructure.entities;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
 
@@ -31,8 +32,11 @@ public class PersonEntity {
         this.name = person.getName();
         this.phoneNumber = person.getPhoneNumber();
         this.address = person.getAddress();
-        this.schoolID = person.getSchoolID().toString();
+        if(person.getSchoolID() != null){
+            this.schoolID = person.getSchoolID().toString(); //ToDO a voir
+        }
         this.id = person.getId().toString();
+        this.events = new LinkedList<>();
         for (Event eventEntity : person.getEvents()) {
             this.events.add(new EventEntity(eventEntity));
         }

@@ -2,6 +2,7 @@ package com.school.schoolapp.domain.implementations;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import com.school.schoolapp.domain.Interfaces.IPerson;
 import com.school.schoolapp.domain.abstractions.Event;
@@ -27,14 +28,8 @@ public class Course extends Event {
     }
 
     @Override
-    public String getName() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getEventName'");
+    public Person getTeacher() throws Exception {
+        return this.Teacher;
     }
 
-    @Override
-    public int getCapacity() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getEventCapacity'");
-    }
 }
