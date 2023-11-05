@@ -61,7 +61,4 @@ public class PersonEntity {
     public void setSchoolID(String id) {
         this.schoolID = id;
     }
-    public Student toStudent() {
-        return new Student(name, phoneNumber, address, UUID.fromString(schoolID));
-    }
 }
