@@ -19,4 +19,8 @@ public class Conference extends Event {
         return speaker;
     }
 
+    @Override
+    public Person getTeacher() throws Exception {
+        throw new Exception("is not teacher");
+    }
 }

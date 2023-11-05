@@ -3,6 +3,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import com.school.schoolapp.domain.abstractions.Person;
 import com.school.schoolapp.domain.implementations.Student;
 
 public interface IEvent {
@@ -10,6 +11,8 @@ public interface IEvent {
     List<Student> getAttendees();
     UUID getId();
     Date getStartDate();
+
+    Person getTeacher() throws Exception;
     Date getEndDate();
     IClassroom getPlace();
     String getName();

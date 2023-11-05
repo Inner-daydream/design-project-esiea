@@ -24,7 +24,4 @@ public class SchoolController {
         UUID id = school.createSchool(request.getSchool());
         return new CreateSchoolResponse(id);
     }
-
-
-
 }

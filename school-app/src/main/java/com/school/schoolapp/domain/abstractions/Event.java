@@ -30,6 +30,11 @@ public abstract class   Event implements IEvent {
         this.isOptional = isOptional;
         this.id = UUID.randomUUID();
     }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
     public Classroom getClassroom() {
         return classroom;
     }
