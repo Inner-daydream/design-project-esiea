@@ -33,4 +33,12 @@ public class PostgreClassroomRepository implements ClassroomRepository {
         ClassroomEntity classroomEntity = new ClassroomEntity(classroom);
         this.postgreClassroomDataRepository.save(classroomEntity);
     }
+
+    @Override
+    public void update(Classroom classroom) {
+        ClassroomEntity classroomEntity = new ClassroomEntity(classroom);
+        this.postgreClassroomDataRepository.save(classroomEntity);
+    }
+
+
 }

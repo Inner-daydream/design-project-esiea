@@ -9,4 +9,5 @@ public interface ClassroomRepository {
     Optional<Classroom> findById(String id);
 
     void save(Classroom classroom);
+    void update(Classroom classroom);
 }

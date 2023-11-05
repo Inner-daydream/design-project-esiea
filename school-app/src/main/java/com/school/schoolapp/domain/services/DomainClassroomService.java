@@ -22,5 +22,10 @@ public class DomainClassroomService implements ClassroomService{
     public Classroom getClassroom(String id) {
         return classroomRepository.findById(id).orElseThrow(() -> new RuntimeException("Classroom not found"));
     }
-    
+
+    @Override
+    public void updateClassroom(Classroom classroom) {
+        classroomRepository.update(classroom);
+    }
+
 }
