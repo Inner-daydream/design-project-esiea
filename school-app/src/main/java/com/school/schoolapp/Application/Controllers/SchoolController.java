@@ -2,7 +2,7 @@ package com.school.schoolapp.Application.Controllers;
 
 import com.school.schoolapp.Application.Requests.school.CreateSchoolRequest;
 import com.school.schoolapp.Application.Requests.school.UpdateSchoolRequest;
-import com.school.schoolapp.Application.response.CreateSchoolResponse;
+import com.school.schoolapp.Application.response.school.CreateSchoolResponse;
 import com.school.schoolapp.Application.response.school.GetAllSchoolResponse;
 import com.school.schoolapp.domain.services.SchoolService;
 import org.springframework.beans.factory.annotation.Autowired;

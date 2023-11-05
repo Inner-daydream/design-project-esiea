@@ -2,8 +2,8 @@ package com.school.schoolapp.Application.Controllers;
 
 import com.school.schoolapp.Application.Requests.Program.CreateProgramRequest;
 import com.school.schoolapp.Application.Requests.Program.UpdateProgramRequest;
-import com.school.schoolapp.Application.response.CreateProgramResponse;
-import com.school.schoolapp.domain.services.EventService;
+import com.school.schoolapp.Application.response.program.CreateProgramResponse;
+import com.school.schoolapp.Application.response.program.GetAllProgramResponse;
 import com.school.schoolapp.domain.services.ProgramService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -30,4 +30,10 @@ public class ProgramController {
     public void updateProgram(@RequestBody UpdateProgramRequest request){
         programService.updateProgram(request.getProgram());
     }
+
+    @GetMapping
+    public GetAllProgramResponse getPrograms(){
+        return new GetAllProgramResponse(programService.getAllPrograms());
+    }
+
 }

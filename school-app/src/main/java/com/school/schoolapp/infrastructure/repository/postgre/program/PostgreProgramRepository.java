@@ -6,6 +6,7 @@ import com.school.schoolapp.infrastructure.entities.ProgramEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -38,5 +39,19 @@ public class PostgreProgramRepository implements ProgramRepository {
     public void update(Program program) {
         ProgramEntity programEntity = new ProgramEntity(program);
         this.postgreProgramDataRepository.save(programEntity);
+    }
+
+    @Override
+    public Optional<List<Program>> findAll() {
+        List<ProgramEntity> programEntities = this.postgreProgramDataRepository.findAll();
+        if (programEntities.size() > 0) {
+            List<Program> program = programEntities.stream().map(programEntity ->
+                    new Program(
+                            programEntity.getName()
+                    )
+            ).toList();
+            return Optional.of(program);
+        }
+        return Optional.empty();
     }
 }

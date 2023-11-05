@@ -3,6 +3,7 @@ package com.school.schoolapp.domain.services;
 import com.school.schoolapp.domain.implementations.Program;
 import com.school.schoolapp.domain.ports.ProgramRepository;
 
+import java.util.List;
 import java.util.UUID;
 
 public class DomainProgramService implements ProgramService {
@@ -21,5 +22,10 @@ public class DomainProgramService implements ProgramService {
     @Override
     public void updateProgram(Program program) {
         programRepository.update(program);
+    }
+
+    @Override
+    public List<Program> getAllPrograms() {
+        return programRepository.findAll().get();
     }
 }
