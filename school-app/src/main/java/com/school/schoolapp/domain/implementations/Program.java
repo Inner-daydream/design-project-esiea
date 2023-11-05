@@ -37,7 +37,7 @@ public class Program implements IProgram {
 
     @Override
     public IEvent getEventByName(String eventName) {
-        return this.events.stream().filter(event -> event.getEventName().equals(eventName)).findFirst().orElseThrow();
+        return this.events.stream().filter(event -> event.getName().equals(eventName)).findFirst().orElseThrow();
     }
     public UUID getId() {
         return id;

@@ -41,7 +41,7 @@ public abstract class Person implements IPerson {
     }
     @Override
     public IEvent getEvent(IEvent event){
-        return events.stream().filter(ievent -> ievent.getEventName().equals(event.getEventName())).findFirst().orElseThrow();
+        return events.stream().filter(ievent -> ievent.getName().equals(event.getName())).findFirst().orElseThrow();
     }
     @Override
     public UUID  getSchoolID() {

@@ -7,6 +7,7 @@ import com.school.schoolapp.domain.Interfaces.IPerson;
 import jakarta.persistence.*;
 
 import com.school.schoolapp.domain.abstractions.Person;
+import com.school.schoolapp.domain.implementations.Student;
 import com.school.schoolapp.domain.abstractions.Event;
 @Entity
 @Table(name = "person")
@@ -59,5 +60,8 @@ public class PersonEntity {
     }
     public void setSchoolID(String id) {
         this.schoolID = id;
+    }
+    public Student toStudent() {
+        return new Student(name, phoneNumber, address, UUID.fromString(schoolID));
     }
 }

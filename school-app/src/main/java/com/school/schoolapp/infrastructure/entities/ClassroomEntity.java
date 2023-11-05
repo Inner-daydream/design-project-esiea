@@ -1,5 +1,6 @@
 package com.school.schoolapp.infrastructure.entities;
 
+import com.school.schoolapp.domain.Interfaces.IClassroom;
 import com.school.schoolapp.domain.implementations.Classroom;
 
 import jakarta.persistence.Entity;
@@ -17,7 +18,7 @@ public class ClassroomEntity {
     public ClassroomEntity() {
     }
 
-    public ClassroomEntity(Classroom classroom) {
+    public ClassroomEntity(IClassroom classroom) {
         this.name = classroom.getName();
         this.buildingName = classroom.getBuildingName();
         this.capacity = classroom.getCapacity();
@@ -38,5 +39,9 @@ public class ClassroomEntity {
 
     public String getId() {
         return id;
+    }
+
+    public Classroom toClassroom() {
+        return new Classroom(this.name, this.buildingName, this.capacity);
     }
 }

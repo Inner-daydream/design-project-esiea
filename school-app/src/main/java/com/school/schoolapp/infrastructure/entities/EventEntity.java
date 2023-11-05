@@ -1,9 +1,15 @@
 package com.school.schoolapp.infrastructure.entities;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import com.school.schoolapp.domain.Interfaces.IEvent;
 import com.school.schoolapp.domain.abstractions.Event;
 import com.school.schoolapp.domain.abstractions.Person;
+import com.school.schoolapp.domain.implementations.Conference;
+import com.school.schoolapp.domain.implementations.Student;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -22,7 +28,7 @@ public class EventEntity {
     private Date endDate;
     @ManyToMany
     @JoinTable(name = "person_event", joinColumns = @JoinColumn(name = "event_id"), inverseJoinColumns = @JoinColumn(name = "person_id"))
-    private List<PersonEntity> students;
+    private List<PersonEntity> attendees;
     private int capacity;
     private boolean isOptional;
     
@@ -31,17 +37,16 @@ public class EventEntity {
 
     public EventEntity() {
     }
-    public EventEntity(Event event) {
+    public EventEntity(IEvent event) {
         this.name = event.getName();
-        this.classroom = new ClassroomEntity(event.getClassroom());
+        this.classroom = new ClassroomEntity(event.getPlace());
         this.startDate = event.getStartDate();
         this.endDate = event.getEndDate();
         this.capacity = event.getCapacity();
         this.isOptional = event.isOptional();
         this.id = event.getId().toString();
-        for (Person person : event.getStudents()) {
-            this.students.add(new PersonEntity(person));
+        for (Person person : event.getAttendees()) {
+            this.attendees.add(new PersonEntity(person));
         }
     }
-
 }
