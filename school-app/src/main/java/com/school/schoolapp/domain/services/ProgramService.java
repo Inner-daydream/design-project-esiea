@@ -6,4 +6,5 @@ import java.util.UUID;
 
 public interface ProgramService {
     UUID createProgram(Program program);
+    void updateProgram(Program program);
 }

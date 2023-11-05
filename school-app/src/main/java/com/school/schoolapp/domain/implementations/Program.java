@@ -18,6 +18,17 @@ public class Program implements IProgram {
         this.name = name;
         this.events = new ArrayList<>();
     }
+    public Program(String name, List<Event> events) {
+        this.id = UUID.randomUUID();
+        this.name = name;
+        this.events = events;
+    }
+
+    public Program(UUID id, String name, List<Event> events) {
+        this.id = id;
+        this.name = name;
+        this.events = events;
+    }
 
     public Program() {
 

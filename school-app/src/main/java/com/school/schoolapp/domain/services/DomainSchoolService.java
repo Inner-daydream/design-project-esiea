@@ -12,4 +12,9 @@ public class DomainSchoolService implements SchoolService {
         schoolRepository.save(school);
         return school.getId();
     }
+
+    @Override
+    public void updateSchool(School school) {
+        schoolRepository.update(school);
+    }
 }

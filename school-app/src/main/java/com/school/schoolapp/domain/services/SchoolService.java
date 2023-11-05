@@ -4,4 +4,5 @@ import com.school.schoolapp.domain.implementations.School;
 import java.util.UUID;
 public interface SchoolService {
     UUID createSchool(School school);
+    void updateSchool(School school);
 }

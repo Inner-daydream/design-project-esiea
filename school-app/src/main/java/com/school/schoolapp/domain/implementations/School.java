@@ -13,16 +13,21 @@ public class School {
     private String name;
     private String address;
     private String phoneNumber;
-    private List<Person> people;
     // private List<Program> programs;
 
     private UUID id;
+    public School(UUID id, String name, String address, String phoneNumber) {
+        this.name = name;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.id = id;
+        // this.programs = new ArrayList<>();
+    }
 
     public School(String name, String address, String phoneNumber) {
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
-        this.people = new ArrayList<>();
         this.id = UUID.randomUUID();
         // this.programs = new ArrayList<>();
     }
@@ -56,9 +61,9 @@ public class School {
     //         }
     //     }).findFirst().orElseThrow().getEventByName(eventName);
     // }
-    public List<Person> getPeople() {
-        return people;
-    }
+    //public List<Person> getPeople() {
+    //    return people;
+    //}
     public UUID getId() {
         return id;
     }

@@ -1,13 +1,12 @@
 package com.school.schoolapp.Application.Controllers;
 
-import com.school.schoolapp.Application.Requests.CreateProgramRequest;
+import com.school.schoolapp.Application.Requests.Program.CreateProgramRequest;
+import com.school.schoolapp.Application.Requests.Program.UpdateProgramRequest;
 import com.school.schoolapp.Application.response.CreateProgramResponse;
+import com.school.schoolapp.domain.services.EventService;
 import com.school.schoolapp.domain.services.ProgramService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
@@ -17,7 +16,7 @@ public class ProgramController {
     private final ProgramService programService;
 
     @Autowired
-    public ProgramController(ProgramService programService) {
+    public ProgramController(ProgramService programService){
         this.programService = programService;
     }
 
@@ -25,5 +24,10 @@ public class ProgramController {
     public CreateProgramResponse createProgram(@RequestBody CreateProgramRequest request){
         UUID id = programService.createProgram(request.getProgram());
         return new CreateProgramResponse(id);
+    }
+
+    @PutMapping("/update")
+    public void updateProgram(@RequestBody UpdateProgramRequest request){
+        programService.updateProgram(request.getProgram());
     }
 }

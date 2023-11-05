@@ -23,6 +23,12 @@ public class PostgreSchoolRepository implements SchoolRepository {
     }
 
     @Override
+    public void update(School school) {
+        SchoolEntity schoolEntity = new SchoolEntity(school);
+        this.postgreSchoolDataRepository.save(schoolEntity);
+    }
+
+    @Override
     public Optional<School> findById(String id) {
         Optional<SchoolEntity> schoolEntity = this.postgreSchoolDataRepository.findById(id);
         if (schoolEntity.isPresent()) {

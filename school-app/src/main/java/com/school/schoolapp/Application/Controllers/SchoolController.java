@@ -1,13 +1,12 @@
 package com.school.schoolapp.Application.Controllers;
 
-import com.school.schoolapp.Application.Requests.CreateSchoolRequest;
+import com.school.schoolapp.Application.Requests.school.CreateSchoolRequest;
+import com.school.schoolapp.Application.Requests.school.UpdateSchoolRequest;
 import com.school.schoolapp.Application.response.CreateSchoolResponse;
 import com.school.schoolapp.domain.services.SchoolService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.UUID;
 
 @RestController
@@ -25,6 +24,9 @@ public class SchoolController {
         return new CreateSchoolResponse(id);
     }
 
-
+    @PutMapping("/update")
+    public void updateSchool(@RequestBody UpdateSchoolRequest request){
+        school.updateSchool(request.getSchool());
+    }
 
 }

@@ -17,4 +17,9 @@ public class DomainProgramService implements ProgramService {
         programRepository.save(program);
         return program.getId();
     }
+
+    @Override
+    public void updateProgram(Program program) {
+        programRepository.update(program);
+    }
 }

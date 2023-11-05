@@ -1,4 +1,4 @@
-package com.school.schoolapp.Application.Requests;
+package com.school.schoolapp.Application.Requests.Program;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

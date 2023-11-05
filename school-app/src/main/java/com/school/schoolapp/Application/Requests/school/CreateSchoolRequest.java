@@ -1,4 +1,4 @@
-package com.school.schoolapp.Application.Requests;
+package com.school.schoolapp.Application.Requests.school;
 
 import javax.validation.constraints.NotNull;
 

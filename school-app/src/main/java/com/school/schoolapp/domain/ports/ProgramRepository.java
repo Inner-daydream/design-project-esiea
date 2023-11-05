@@ -7,4 +7,5 @@ import java.util.Optional;
 public interface ProgramRepository {
     Optional<Program> findById(String id);
     void save(Program program);
+    void update(Program program);
 }

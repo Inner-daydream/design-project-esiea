@@ -33,4 +33,10 @@ public class PostgreProgramRepository implements ProgramRepository {
         ProgramEntity programEntity = new ProgramEntity(program);
         this.postgreProgramDataRepository.save(programEntity);
     }
+
+    @Override
+    public void update(Program program) {
+        ProgramEntity programEntity = new ProgramEntity(program);
+        this.postgreProgramDataRepository.save(programEntity);
+    }
 }
