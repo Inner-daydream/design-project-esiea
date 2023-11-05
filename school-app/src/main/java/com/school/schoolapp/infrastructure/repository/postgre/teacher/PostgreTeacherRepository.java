@@ -32,8 +32,10 @@ public class PostgreTeacherRepository implements TeacherRepository {
                     teacherEntity.get().getName(),
                     teacherEntity.get().getPhoneNumber(),
                     teacherEntity.get().getAddress(),
-                    teacherEntity.get().getSalary(),
-                    UUID.fromString(teacherEntity.get().getSchoolID())
+                    UUID.fromString(teacherEntity.get().getSchoolID()),
+                    UUID.fromString(teacherEntity.get().getID()),
+                    teacherEntity.get().getSalary()
+
             );
             return Optional.of(teacher);
         }

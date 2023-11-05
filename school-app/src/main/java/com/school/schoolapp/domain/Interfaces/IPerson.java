@@ -14,6 +14,7 @@ public interface IPerson {
     void setName(String name);
     void setPhoneNumber(String phoneNumber);
     void setAddress(String address);
+
     void addEvent(IEvent event);
     void removeEvent(int eventIndex);
     IEvent getEvent(IEvent event);

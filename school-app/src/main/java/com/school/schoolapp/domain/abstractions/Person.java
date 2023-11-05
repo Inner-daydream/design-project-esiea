@@ -36,6 +36,15 @@ public abstract class Person implements IPerson {
         this.schoolID = schoolID;
     }
 
+    public Person(String name, String phoneNumber, String address, UUID schoolID, UUID id) {
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.schoolID = schoolID;
+        this.events = new ArrayList<>();
+        this.id = id;
+    }
+
     public Person() {
 
     }

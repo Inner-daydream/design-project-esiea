@@ -17,6 +17,10 @@ public class StudentEntity {
     public StudentEntity() {
     }
 
+    public String getID() {
+        return ID;
+    }
+
     public StudentEntity(Student student) {
         this.ID = student.getId().toString();
         this.person = new PersonEntity(student);

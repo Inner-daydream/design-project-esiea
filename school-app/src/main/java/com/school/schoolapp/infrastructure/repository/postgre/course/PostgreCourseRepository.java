@@ -22,6 +22,7 @@ public class PostgreCourseRepository  implements CourseRepository {
     public void save(Course course) {
         EventEntity eventEntity = new EventEntity(course);
         CourseEntity courseEntity = new CourseEntity(course);
+
         this.postgreEventDataRepository.save(eventEntity);
         this.postgreCourseDataRepository.save(courseEntity);
 
