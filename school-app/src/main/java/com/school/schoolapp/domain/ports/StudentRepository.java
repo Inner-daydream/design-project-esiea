@@ -6,4 +6,5 @@ public interface StudentRepository {
     Optional<Student> findById(String id);
     Optional<List<Student>> findAllById(List<String> ids);
     void save(Student student);
+    void update(Student student);
 }

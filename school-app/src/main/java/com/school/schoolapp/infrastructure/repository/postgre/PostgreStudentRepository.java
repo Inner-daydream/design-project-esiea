@@ -49,6 +49,14 @@ public class PostgreStudentRepository implements StudentRepository {
     }
 
     @Override
+    public void update(Student student) {
+        StudentEntity studentEntity = new StudentEntity(student);
+        PersonEntity personEntity = new PersonEntity(student);
+        this.personRepository.save(personEntity);
+        this.postgreStudentDataRepository.save(studentEntity);
+    }
+
+    @Override
     public Optional<List<Student>> findAllById(List<String> ids) {
         List<StudentEntity> studentEntity = this.postgreStudentDataRepository.findAllById(ids); 
         if(studentEntity.size() > 0) {

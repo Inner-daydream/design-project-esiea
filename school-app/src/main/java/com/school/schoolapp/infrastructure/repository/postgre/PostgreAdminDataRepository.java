@@ -11,8 +11,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PostgreAdminDataRepository extends JpaRepository<AdminEntity, String> {
-    @Transactional
-    @Modifying
-    @Query("update AdminEntity a set a.salary = :salary where a.ID = :id")
-    void updateAdmin(@Param("id") String id, @Param("salary") int salary);
 }

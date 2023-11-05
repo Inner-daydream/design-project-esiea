@@ -1,8 +1,7 @@
 package com.school.schoolapp.Application.Controllers;
 
-import com.school.schoolapp.Application.Requests.CreateTeacherRequest;
+import com.school.schoolapp.Application.Requests.teacher.CreateTeacherRequest;
 import com.school.schoolapp.Application.response.CreateTeacherResponse;
-import com.school.schoolapp.domain.services.PersonService;
 import com.school.schoolapp.domain.services.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

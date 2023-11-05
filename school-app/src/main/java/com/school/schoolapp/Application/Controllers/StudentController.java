@@ -1,13 +1,10 @@
 package com.school.schoolapp.Application.Controllers;
-import com.school.schoolapp.Application.Requests.CreateStudentRequest;
+import com.school.schoolapp.Application.Requests.student.CreateStudentRequest;
+import com.school.schoolapp.Application.Requests.student.UpdateStudentRequest;
 import com.school.schoolapp.Application.response.CreateStudentResponse;
-import com.school.schoolapp.domain.services.PersonService;
 import com.school.schoolapp.domain.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
@@ -25,5 +22,10 @@ public class StudentController {
     public CreateStudentResponse createStudent(@RequestBody CreateStudentRequest request){
         UUID id = student.createStudent(request.getStudent());
         return new CreateStudentResponse(id);
+    }
+
+    @PutMapping("/update")
+    public void updateStudent(@RequestBody UpdateStudentRequest request){
+        student.updateStudent(request.getStudent());
     }
 }

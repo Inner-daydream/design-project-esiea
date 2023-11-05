@@ -27,6 +27,10 @@ public class DomainStudentService implements StudentService{
         return studentRepository.findAllById(ids).get();
     }
 
-    
+    @Override
+    public void updateStudent(Student student) {
+        studentRepository.update(student);
+    }
+
 
 }
