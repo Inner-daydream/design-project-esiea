@@ -6,6 +6,7 @@ import com.school.schoolapp.domain.implementations.Classroom;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "classroom")
@@ -46,6 +47,6 @@ public class ClassroomEntity {
     }
 
     public Classroom toClassroom() {
-        return new Classroom(this.name, this.buildingName, this.capacity);
+        return new Classroom(this.name, this.buildingName, this.capacity, UUID.fromString(this.id));
     }
 }
