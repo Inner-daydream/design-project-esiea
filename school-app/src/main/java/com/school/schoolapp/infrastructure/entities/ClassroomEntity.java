@@ -25,7 +25,7 @@ public class ClassroomEntity {
     public ClassroomEntity(IClassroom classroom) {
         this.name = classroom.getName();
         this.buildingName = classroom.getBuildingName();
-        this.capacity = classroom.getCapacity();
+        this.capacity = classroom == null ? 0  : classroom.getCapacity();
         this.id = classroom.getId().toString();
     }
 

@@ -44,7 +44,7 @@ public class EventEntity {
 
     public EventEntity(IEvent event) {
         this.name = event.getName();
-        this.classroom = new ClassroomEntity(event.getPlace());
+        this.classroom = event.getPlace() == null ? null : new ClassroomEntity(event.getPlace());
         this.startDate = event.getStartDate();
         this.endDate = event.getEndDate();
         this.capacity = event.getCapacity();
@@ -57,9 +57,12 @@ public class EventEntity {
              this.personEntity = null;
          }
         this.attendees = new LinkedList<>();
-        for (IPerson person : event.getAttendees()) {
-            this.attendees.add(new PersonEntity(person));
-        }
+         if(event.getAttendees() != null){
+             for (IPerson person : event.getAttendees()) {
+                 this.attendees.add(new PersonEntity(person));
+             }
+         }
+
     }
 
     public List<PersonEntity> getAttendees() {

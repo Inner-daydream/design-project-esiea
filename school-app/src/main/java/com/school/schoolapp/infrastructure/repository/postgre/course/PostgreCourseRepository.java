@@ -61,7 +61,8 @@ public class PostgreCourseRepository  implements CourseRepository {
                         )
                 ).toList(),
                 courseEntity.getEvent() == null? 0: courseEntity.getEvent().getCapacity(),
-                courseEntity.getEvent() == null? false: courseEntity.getEvent().isOptional()
+                courseEntity.getEvent() == null? false: courseEntity.getEvent().isOptional(),
+                UUID.fromString(courseEntity.getId())
         )).toList();
     }
 }

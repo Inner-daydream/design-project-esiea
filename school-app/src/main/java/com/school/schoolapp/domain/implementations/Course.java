@@ -26,6 +26,13 @@ public class Course extends Event {
         this.isExam = isExam;
         Teacher = (Person) teacher;
     }
+    public Course(boolean isExam, IPerson teacher, String name, Classroom classroom, Date startDate, Date endDate, List<Student> students, int capacity, boolean isOptional, UUID id) {
+        super(name, classroom, startDate, endDate, students, capacity, isOptional);
+        this.isExam = isExam;
+        Teacher = (Person) teacher;
+        super.setId(id);
+    }
+
 
 
     @Override
