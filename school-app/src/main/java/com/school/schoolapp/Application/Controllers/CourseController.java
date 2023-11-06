@@ -3,10 +3,12 @@ package com.school.schoolapp.Application.Controllers;
 import com.school.schoolapp.Application.Requests.course.CreateCourseRequest;
 import com.school.schoolapp.Application.response.course.CreateCourseResponse;
 import com.school.schoolapp.Application.response.course.GetAllCourseResponse;
+import com.school.schoolapp.domain.implementations.Course;
 import com.school.schoolapp.domain.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -39,7 +41,8 @@ public class CourseController {
         return new CreateCourseResponse(id);
     }
     @GetMapping
-    public GetAllCourseResponse getAllCourses(){
-        return new GetAllCourseResponse(courseService.getAll());
+    public List<Course>  getAllCourses(){
+        return courseService.getAll();
+        //return new GetAllCourseResponse();
     }
 }

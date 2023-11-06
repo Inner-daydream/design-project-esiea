@@ -38,18 +38,19 @@ public class PostgreCourseRepository  implements CourseRepository {
         List<CourseEntity> res = this.postgreCourseDataRepository.findAll();
         return res.stream().map(courseEntity -> new Course(
                 courseEntity.isExam(),
-                new Teacher(
-                        courseEntity.getTeacher().getName(),
-                        courseEntity.getTeacher().getPhoneNumber(),
-                        courseEntity.getTeacher().getAddress(),
-                        UUID.fromString(courseEntity.getTeacher().getSchoolID()),
-                        UUID.fromString(courseEntity.getTeacher().getId())
-                ),
-                courseEntity.getEvent().getName(),
-                courseEntity.getEvent().getClassroom().toClassroom(),
-                courseEntity.getEvent().getStartDate(),
-                courseEntity.getEvent().getEndDate(),
-                courseEntity.getEvent().getAttendees().stream().map(
+                courseEntity.getTeacher() == null ? null:
+                        new Teacher(
+                                courseEntity.getTeacher().getName(),
+                                courseEntity.getTeacher().getPhoneNumber(),
+                                courseEntity.getTeacher().getAddress(),
+                                UUID.fromString(courseEntity.getTeacher().getSchoolID()),
+                                UUID.fromString(courseEntity.getTeacher().getId())
+                        ),
+                courseEntity.getEvent() == null? null: courseEntity.getEvent().getName(),
+                courseEntity.getEvent() == null? null: courseEntity.getEvent().getClassroom().toClassroom(),
+                courseEntity.getEvent() == null? null: courseEntity.getEvent().getStartDate(),
+                courseEntity.getEvent() == null? null: courseEntity.getEvent().getEndDate(),
+                courseEntity.getEvent() == null? null: courseEntity.getEvent().getAttendees().stream().map(
                         personEntity -> new Student(
                                 personEntity.getName(),
                                 personEntity.getPhoneNumber(),
@@ -59,8 +60,8 @@ public class PostgreCourseRepository  implements CourseRepository {
                                 0
                         )
                 ).toList(),
-                courseEntity.getEvent().getCapacity(),
-                courseEntity.getEvent().isOptional()
+                courseEntity.getEvent() == null? 0: courseEntity.getEvent().getCapacity(),
+                courseEntity.getEvent() == null? false: courseEntity.getEvent().isOptional()
         )).toList();
     }
 }
