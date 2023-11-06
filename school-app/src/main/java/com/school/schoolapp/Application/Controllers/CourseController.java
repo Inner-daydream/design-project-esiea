@@ -1,13 +1,11 @@
 package com.school.schoolapp.Application.Controllers;
 
-import com.school.schoolapp.Application.Requests.CreateCourseRequest;
-import com.school.schoolapp.Application.response.CreateCourseResponse;
+import com.school.schoolapp.Application.Requests.course.CreateCourseRequest;
+import com.school.schoolapp.Application.response.course.CreateCourseResponse;
+import com.school.schoolapp.Application.response.course.GetAllCourseResponse;
 import com.school.schoolapp.domain.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
@@ -39,5 +37,9 @@ public class CourseController {
                         )
         );
         return new CreateCourseResponse(id);
+    }
+    @GetMapping
+    public GetAllCourseResponse getAllCourses(){
+        return new GetAllCourseResponse(courseService.getAll());
     }
 }

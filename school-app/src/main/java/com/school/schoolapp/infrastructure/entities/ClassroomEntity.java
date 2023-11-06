@@ -3,9 +3,10 @@ package com.school.schoolapp.infrastructure.entities;
 import com.school.schoolapp.domain.Interfaces.IClassroom;
 import com.school.schoolapp.domain.implementations.Classroom;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.List;
+
 @Entity
 @Table(name = "classroom")
 public class ClassroomEntity {
@@ -14,6 +15,9 @@ public class ClassroomEntity {
     private int capacity;
     @Id
     private String id;
+    @ManyToMany
+    @JoinTable(name = "event_clasroom", joinColumns = @JoinColumn(name = "classroom_id"), inverseJoinColumns = @JoinColumn(name = "event_id"))
+    private List<EventEntity> events;
 
     public ClassroomEntity() {
     }

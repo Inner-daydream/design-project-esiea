@@ -55,6 +55,10 @@ public class PersonEntity {
         return name;
     }
 
+    public String getId() {
+        return id;
+    }
+
     public String getPhoneNumber() {
         return phoneNumber;
     }

@@ -18,10 +18,9 @@ public class Conference extends Event {
     public Person getSpeaker() {
         return speaker;
     }
-}
 
-//     @Override
-//     public Person getTeacher() throws Exception {
-//         throw new Exception("is not teacher");
-//     }
-// }
+     @Override
+     public Person getTeacher() throws Exception {
+         return null;
+     }
+ }

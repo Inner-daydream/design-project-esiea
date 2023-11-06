@@ -50,12 +50,12 @@ public class EventEntity {
         this.capacity = event.getCapacity();
         this.isOptional = event.isOptional();
         this.id = event.getId().toString();
-        // try{
-        //     this.personEntity = new PersonEntity((event.getTeacher()));
+         try{
+             this.personEntity = new PersonEntity((event.getTeacher()));
 
-        // }catch (Exception ex){
-        //     this.personEntity = null;
-        // }
+         }catch (Exception ex){
+             this.personEntity = null;
+         }
         this.attendees = new LinkedList<>();
         for (IPerson person : event.getAttendees()) {
             this.attendees.add(new PersonEntity(person));

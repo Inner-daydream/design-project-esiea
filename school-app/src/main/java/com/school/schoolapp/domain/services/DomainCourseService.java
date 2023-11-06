@@ -4,6 +4,7 @@ import com.school.schoolapp.domain.implementations.Course;
 import com.school.schoolapp.domain.ports.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
 import java.util.UUID;
 
 public class DomainCourseService implements  CourseService{
@@ -18,5 +19,10 @@ public class DomainCourseService implements  CourseService{
     public UUID createCourse(Course course) {
         repository.save(course);
         return course.getId();
+    }
+
+    @Override
+    public List<Course> getAll() {
+        return repository.getAll();
     }
 }
