@@ -32,9 +32,7 @@ export interface Student {
 export interface StudentJsonData {
     students: Student[];
 }
-export interface TeacherJsonData {
-    teachers: Teacher[];
-}
+
 export interface AddStudentRequest {
     name: string;
     address: string;
@@ -42,14 +40,6 @@ export interface AddStudentRequest {
     lunchCredit: number;
     phoneNumber: string;
 }
-export interface AddTeacherRequest {
-    name: string;
-    address: string;
-    schoolID: string;
-    salary: number;
-    phoneNumber: string;
-}
-
 export interface Teacher {
     id: string;
     name: string;
@@ -58,4 +48,28 @@ export interface Teacher {
     phoneNumber: string;
     schoolName?: string;
     salary: number;
+}
+export interface TeacherJsonData {
+  teachers: Teacher[];
+}
+export interface AddTeacherRequest {
+  name: string;
+  address: string;
+  schoolID: string;
+  salary: number;
+  phoneNumber: string;
+}
+export interface Classroom {
+  id: string,
+  name: string,
+  buildingName: string,
+  capacity: number,
+}
+export interface ClassroomJsonData {
+  classrooms: Classroom[];
+}
+export interface AddClassroomRequest {
+  name: string,
+  buildingName: string,
+  capacity: number,
 }
