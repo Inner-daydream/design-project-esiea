@@ -6,7 +6,7 @@ import com.school.schoolapp.domain.implementations.Teacher;
 import com.school.schoolapp.domain.ports.CourseRepository;
 import com.school.schoolapp.infrastructure.entities.CourseEntity;
 import com.school.schoolapp.infrastructure.entities.EventEntity;
-import com.school.schoolapp.infrastructure.repository.postgre.PostgreEventDataRepository;
+import com.school.schoolapp.infrastructure.repository.postgre.event.PostgreEventDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

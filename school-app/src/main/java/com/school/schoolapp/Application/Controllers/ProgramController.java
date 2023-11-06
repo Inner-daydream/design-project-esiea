@@ -4,7 +4,7 @@ import com.school.schoolapp.Application.Requests.Program.CreateProgramRequest;
 import com.school.schoolapp.Application.Requests.Program.UpdateProgramRequest;
 import com.school.schoolapp.Application.response.program.CreateProgramResponse;
 import com.school.schoolapp.Application.response.program.GetAllProgramsResponse;
-import com.school.schoolapp.domain.services.ProgramService;
+import com.school.schoolapp.domain.services.program.ProgramService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

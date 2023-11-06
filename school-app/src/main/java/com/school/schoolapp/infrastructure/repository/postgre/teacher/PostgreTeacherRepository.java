@@ -4,7 +4,7 @@ import com.school.schoolapp.domain.implementations.Teacher;
 import com.school.schoolapp.domain.ports.TeacherRepository;
 import com.school.schoolapp.infrastructure.entities.PersonEntity;
 import com.school.schoolapp.infrastructure.entities.TeacherEntity;
-import com.school.schoolapp.infrastructure.repository.postgre.PostgrePersonDataRepository;
+import com.school.schoolapp.infrastructure.repository.postgre.person.PostgrePersonDataRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

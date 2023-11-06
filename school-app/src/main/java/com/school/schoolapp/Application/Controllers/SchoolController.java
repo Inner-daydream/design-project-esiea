@@ -5,7 +5,7 @@ import com.school.schoolapp.Application.Requests.school.UpdateSchoolRequest;
 import com.school.schoolapp.Application.response.school.CreateSchoolResponse;
 import com.school.schoolapp.Application.response.school.GetAllSchoolResponse;
 import com.school.schoolapp.Application.response.school.GetSchoolResponse;
-import com.school.schoolapp.domain.services.SchoolService;
+import com.school.schoolapp.domain.services.school.SchoolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;

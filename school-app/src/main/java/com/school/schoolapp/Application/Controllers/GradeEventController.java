@@ -1,13 +1,13 @@
 // package com.school.schoolapp.Application.Controllers;
 
-// import com.school.schoolapp.Application.Requests.CreateGradeEventRequest;
+// import com.school.schoolapp.Application.Requests.gradeEvent.CreateGradeEventRequest;
 // import com.school.schoolapp.Application.response.CreateGradeEventResponse;
 // import com.school.schoolapp.domain.Interfaces.IEvent;
 // import com.school.schoolapp.domain.Interfaces.IPerson;
 // import com.school.schoolapp.domain.implementations.GradeEvent;
-// import com.school.schoolapp.domain.services.EventService;
-// import com.school.schoolapp.domain.services.GradeEventService;
-// import com.school.schoolapp.domain.services.PersonService;
+// import com.school.schoolapp.domain.services.event.EventService;
+// import com.school.schoolapp.domain.services.gradeEvent.GradeEventService;
+// import com.school.schoolapp.domain.services.program.PersonService;
 // import org.springframework.beans.factory.annotation.Autowired;
 // import org.springframework.web.bind.annotation.PostMapping;
 // import org.springframework.web.bind.annotation.RequestBody;

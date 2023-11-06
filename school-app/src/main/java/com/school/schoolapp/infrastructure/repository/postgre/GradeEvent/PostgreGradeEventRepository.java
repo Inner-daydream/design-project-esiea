@@ -1,12 +1,10 @@
 package com.school.schoolapp.infrastructure.repository.postgre.GradeEvent;
 
-import com.school.schoolapp.domain.abstractions.Event;
 import com.school.schoolapp.domain.implementations.*;
 import com.school.schoolapp.domain.ports.GradeEventRepository;
 import com.school.schoolapp.infrastructure.entities.EventEntity;
 import com.school.schoolapp.infrastructure.entities.GradeEventEntity;
 import com.school.schoolapp.infrastructure.entities.PersonEntity;
-import com.school.schoolapp.infrastructure.repository.postgre.PostgreEventDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

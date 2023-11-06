@@ -1,11 +1,30 @@
 package com.school.schoolapp.infrastructure.configuration;
 
 import com.school.schoolapp.domain.ports.*;
-import com.school.schoolapp.domain.services.*;
+import com.school.schoolapp.domain.services.admin.AdminService;
+import com.school.schoolapp.domain.services.admin.DomainAdminService;
+import com.school.schoolapp.domain.services.classroom.ClassroomService;
+import com.school.schoolapp.domain.services.classroom.DomainClassroomService;
+import com.school.schoolapp.domain.services.conference.ConferenceService;
+import com.school.schoolapp.domain.services.conference.DomainConferenceService;
+import com.school.schoolapp.domain.services.course.CourseService;
+import com.school.schoolapp.domain.services.course.DomainCourseService;
+import com.school.schoolapp.domain.services.event.DomainEventService;
+import com.school.schoolapp.domain.services.event.EventService;
+import com.school.schoolapp.domain.services.gradeEvent.DomainGradeEventService;
+import com.school.schoolapp.domain.services.gradeEvent.GradeEventService;
+import com.school.schoolapp.domain.services.person.DomainPersonService;
+import com.school.schoolapp.domain.services.program.DomainProgramService;
+import com.school.schoolapp.domain.services.program.PersonService;
+import com.school.schoolapp.domain.services.program.ProgramService;
+import com.school.schoolapp.domain.services.school.DomainSchoolService;
+import com.school.schoolapp.domain.services.school.SchoolService;
+import com.school.schoolapp.domain.services.student.DomainStudentService;
+import com.school.schoolapp.domain.services.student.StudentService;
+import com.school.schoolapp.domain.services.teacher.DomainTeacherService;
+import com.school.schoolapp.domain.services.teacher.TeacherService;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
 public class BeanConfiguration {

@@ -4,7 +4,7 @@ import com.school.schoolapp.Application.Requests.student.UpdateStudentRequest;
 import com.school.schoolapp.Application.response.student.CreateStudentResponse;
 import com.school.schoolapp.Application.response.student.GetAllStudentsResponse;
 import com.school.schoolapp.Application.response.student.GetStudentResponse;
-import com.school.schoolapp.domain.services.StudentService;
+import com.school.schoolapp.domain.services.student.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -4,7 +4,7 @@ import com.school.schoolapp.Application.Requests.admin.CreateAdminRequest;
 import com.school.schoolapp.Application.Requests.admin.UpdateAdminRequest;
 import com.school.schoolapp.Application.response.admin.CreateAdminResponse;
 import com.school.schoolapp.Application.response.admin.GetAllAdminsResponse;
-import com.school.schoolapp.domain.services.AdminService;
+import com.school.schoolapp.domain.services.admin.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

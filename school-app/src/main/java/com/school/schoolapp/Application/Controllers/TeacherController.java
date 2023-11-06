@@ -4,7 +4,7 @@ import com.school.schoolapp.Application.Requests.teacher.CreateTeacherRequest;
 import com.school.schoolapp.Application.Requests.teacher.UpdateTeacherRequest;
 import com.school.schoolapp.Application.response.teacher.CreateTeacherResponse;
 import com.school.schoolapp.Application.response.teacher.GetAllTeachersResponse;
-import com.school.schoolapp.domain.services.TeacherService;
+import com.school.schoolapp.domain.services.teacher.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

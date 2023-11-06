@@ -1,12 +1,12 @@
 package com.school.schoolapp.Application.Controllers;
 
-import com.school.schoolapp.Application.Requests.CreateConferenceRequest;
+import com.school.schoolapp.Application.Requests.conference.CreateConferenceRequest;
 import com.school.schoolapp.Application.response.conference.CreateConferenceResponse;
 import com.school.schoolapp.Application.response.conference.GetAllConferencesResponse;
-import com.school.schoolapp.domain.services.ClassroomService;
-import com.school.schoolapp.domain.services.ConferenceService;
-import com.school.schoolapp.domain.services.PersonService;
-import com.school.schoolapp.domain.services.StudentService;
+import com.school.schoolapp.domain.services.classroom.ClassroomService;
+import com.school.schoolapp.domain.services.conference.ConferenceService;
+import com.school.schoolapp.domain.services.program.PersonService;
+import com.school.schoolapp.domain.services.student.StudentService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
