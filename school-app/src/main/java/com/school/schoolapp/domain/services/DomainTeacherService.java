@@ -3,6 +3,7 @@ package com.school.schoolapp.domain.services;
 import com.school.schoolapp.domain.implementations.Teacher;
 import com.school.schoolapp.domain.ports.TeacherRepository;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -25,5 +26,9 @@ public class DomainTeacherService implements TeacherService{
     @Override
     public Teacher getTeacher(String id) {
         return teacherRepository.findById(id).orElseThrow();
+    }
+    @Override
+    public List<Teacher> getAllTeachers() {
+        return teacherRepository.findAll().get();
     }
 }

@@ -23,4 +23,8 @@ public class DomainSchoolService implements SchoolService {
     public List<School> getAllSchool() {
         return schoolRepository.findAll().get();
     }
+    @Override
+    public School getSchool(String id) {
+        return schoolRepository.findById(id).get();
+    }
 }

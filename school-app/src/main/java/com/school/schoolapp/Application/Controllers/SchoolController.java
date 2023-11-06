@@ -4,6 +4,7 @@ import com.school.schoolapp.Application.Requests.school.CreateSchoolRequest;
 import com.school.schoolapp.Application.Requests.school.UpdateSchoolRequest;
 import com.school.schoolapp.Application.response.school.CreateSchoolResponse;
 import com.school.schoolapp.Application.response.school.GetAllSchoolResponse;
+import com.school.schoolapp.Application.response.school.GetSchoolResponse;
 import com.school.schoolapp.domain.services.SchoolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -40,5 +41,11 @@ public class SchoolController {
     public void updateSchool(@RequestBody UpdateSchoolRequest request) {
         school.updateSchool(request.getSchool());
     }
+
+    @GetMapping("/{id}")
+    public GetSchoolResponse getSchool(@PathVariable String id) {
+        return new GetSchoolResponse(school.getSchool(id));
+    }
+
 }
 

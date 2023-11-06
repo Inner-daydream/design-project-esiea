@@ -3,6 +3,7 @@ import com.school.schoolapp.Application.Requests.student.CreateStudentRequest;
 import com.school.schoolapp.Application.Requests.student.UpdateStudentRequest;
 import com.school.schoolapp.Application.response.student.CreateStudentResponse;
 import com.school.schoolapp.Application.response.student.GetAllStudentsResponse;
+import com.school.schoolapp.Application.response.student.GetStudentResponse;
 import com.school.schoolapp.domain.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +33,10 @@ public class StudentController {
     @GetMapping
     public GetAllStudentsResponse getStudent(){
         return new GetAllStudentsResponse(student.getAllStudents());
+    }
+    @GetMapping("/{id}")
+    public GetStudentResponse getStudent(@PathVariable String id){
+        return new GetStudentResponse(student.getStudent(id));
     }
     
 

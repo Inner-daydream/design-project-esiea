@@ -7,6 +7,7 @@ import com.school.schoolapp.infrastructure.entities.TeacherEntity;
 import com.school.schoolapp.infrastructure.repository.postgre.PostgrePersonDataRepository;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -57,4 +58,23 @@ public class PostgreTeacherRepository implements TeacherRepository {
         this.personRepository.save(personEntity);
         this.postgreTeacherDataRepository.save(teacherEntity);
     }
+
+    @Override
+    public Optional<List<Teacher>> findAll() {
+        List<TeacherEntity> teacherEntities = this.postgreTeacherDataRepository.findAll();
+        if (teacherEntities.size() > 0) {
+            List<Teacher> teachers = teacherEntities.stream().map(teacherEntity -> new Teacher(
+                    teacherEntity.getName(),
+                    teacherEntity.getPhoneNumber(),
+                    teacherEntity.getAddress(),
+                    UUID.fromString(teacherEntity.getSchoolID()),
+                    UUID.fromString(teacherEntity.getID()),
+                    teacherEntity.getSalary()
+            )).toList();
+            return Optional.of(teachers);
+        }
+        return Optional.empty();
+    }
+
+    
 }

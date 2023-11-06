@@ -38,5 +38,10 @@ public class DomainStudentService implements StudentService{
         return studentRepository.findAll().get();
     }
 
+    @Override
+    public Student getStudent(String id) {
+        return studentRepository.findById(id).get();
+    }
+
 
 }

@@ -2,6 +2,7 @@ package com.school.schoolapp.infrastructure.repository.postgre;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -47,8 +48,9 @@ public class PostgreSchoolRepository implements SchoolRepository {
                 new School(
                     schoolEntity.getName(),
                     schoolEntity.getAddress(), 
-                    schoolEntity.getPhoneNumber())
-                ).toList();
+                    schoolEntity.getPhoneNumber(),
+                    UUID.fromString(schoolEntity.getID())
+                )).toList();
             return Optional.of(school);
         }
         return Optional.empty();

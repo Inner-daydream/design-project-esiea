@@ -41,4 +41,7 @@ public class SchoolEntity {
     public String getPhoneNumber() {
         return phoneNumber;
     }
+    public String getID() {
+        return id;
+    }
 }

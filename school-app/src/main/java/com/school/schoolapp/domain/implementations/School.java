@@ -32,6 +32,13 @@ public class School {
         // this.programs = new ArrayList<>();
     }
 
+    public School(String name, String address, String phoneNumber, UUID id) {
+        this.name = name;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.id = id;
+        // this.programs = new ArrayList<>();
+    }
     public School() {
 
     }

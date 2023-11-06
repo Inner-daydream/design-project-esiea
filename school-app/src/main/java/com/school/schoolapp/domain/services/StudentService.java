@@ -10,5 +10,6 @@ public interface StudentService {
     List<Student> getStudents(List<String> ids);
     void updateStudent(Student student);
     List<Student> getAllStudents();
+    Student getStudent(String id);
 
 }
